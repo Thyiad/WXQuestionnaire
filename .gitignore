@@ -1,0 +1,11 @@
+packages
+WXQuestionnaire.BLL/bin
+WXQuestionnaire.BLL/obj
+WXQuestionnaire.DAL/bin
+WXQuestionnaire.DAL/obj
+WXQuestionnaire.Model/bin
+WXQuestionnaire.Model/obj
+WXQuestionnaire.Web/bin
+WXQuestionnaire.Web/obj
+WXQuestionnaire.Tool/bin
+WXQuestionnaire.Tool/obj
