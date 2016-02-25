@@ -1,0 +1,56 @@
+﻿@model WXQuestionnaire.Model.Admin.LoginVM
+@{
+    ViewBag.Title = "管理员登录";
+}
+
+@section styles{
+    <style type="text/css">
+        #loginBox {
+            max-width:400px;
+            margin:auto;
+        }
+    </style>
+}
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div id="loginBox" class="panel panel-default">
+        <div class="panel-heading">
+            <h4>管理员登录</h4>
+        </div>
+        <div class="panel-body">
+            @Html.ValidationSummary(true, "", new { @class="text-danger"});
+            <div class="form-group">
+                @Html.LabelFor(model => model.Account, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.Account, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Account, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Password, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.Password, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="登陆" class="btn btn-default btn-block" />
+                </div>
+            </div>
+        </div>
+    </div>
+   
+}
+
+@section scripts{
+    <script type="text/javascript">
+        $("#loginBox").css("margin-top",(#(window).height()-$('#loginBox').height())/2);
+    </script>
+}
+

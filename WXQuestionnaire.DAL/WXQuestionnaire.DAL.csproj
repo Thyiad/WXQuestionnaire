@@ -51,6 +51,8 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -62,11 +64,53 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EFContext.cs" />
+    <Compile Include="Migrations\201602251443026_addAdmin.cs" />
+    <Compile Include="Migrations\201602251443026_addAdmin.Designer.cs">
+      <DependentUpon>201602251443026_addAdmin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201602251448369_updateAdmin.cs" />
+    <Compile Include="Migrations\201602251448369_updateAdmin.Designer.cs">
+      <DependentUpon>201602251448369_updateAdmin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201602251456415_updateAdmin2.cs" />
+    <Compile Include="Migrations\201602251456415_updateAdmin2.Designer.cs">
+      <DependentUpon>201602251456415_updateAdmin2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201602251459289_updateAdmin3.cs" />
+    <Compile Include="Migrations\201602251459289_updateAdmin3.Designer.cs">
+      <DependentUpon>201602251459289_updateAdmin3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WXQuestionnaire.Model\WXQuestionnaire.Model.csproj">
+      <Project>{8e65a5ae-2bf3-4fe1-8932-f292c30e1948}</Project>
+      <Name>WXQuestionnaire.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WXQuestionnaire.Tool\WXQuestionnaire.Tool.csproj">
+      <Project>{db90424a-eb96-4ea8-9436-f37271c31f0e}</Project>
+      <Name>WXQuestionnaire.Tool</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201602251443026_addAdmin.resx">
+      <DependentUpon>201602251443026_addAdmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602251448369_updateAdmin.resx">
+      <DependentUpon>201602251448369_updateAdmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602251456415_updateAdmin2.resx">
+      <DependentUpon>201602251456415_updateAdmin2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602251459289_updateAdmin3.resx">
+      <DependentUpon>201602251459289_updateAdmin3.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

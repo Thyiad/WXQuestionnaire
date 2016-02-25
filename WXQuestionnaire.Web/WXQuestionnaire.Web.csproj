@@ -140,6 +140,7 @@
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Login.cshtml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\jquery-2.2.0.js" />
     <Content Include="Scripts\jquery-2.2.0.min.js" />
@@ -150,6 +151,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Infrastructure\AdminAuthenticationAttribute.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -174,10 +176,17 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Models\" />
-    <Folder Include="Models\" />
+    <Folder Include="Infrastructure\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\WXQuestionnaire.BLL\WXQuestionnaire.BLL.csproj">
+      <Project>{df2152e0-1814-49fe-8816-a57ff2106779}</Project>
+      <Name>WXQuestionnaire.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WXQuestionnaire.Model\WXQuestionnaire.Model.csproj">
+      <Project>{8e65a5ae-2bf3-4fe1-8932-f292c30e1948}</Project>
+      <Name>WXQuestionnaire.Model</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WXQuestionnaire.Tool\WXQuestionnaire.Tool.csproj">
       <Project>{db90424a-eb96-4ea8-9436-f37271c31f0e}</Project>
       <Name>WXQuestionnaire.Tool</Name>

@@ -36,9 +36,14 @@
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.8.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,11 +51,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin\AdminService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WXQuestionnaire.DAL\WXQuestionnaire.DAL.csproj">
+      <Project>{4433e5f5-517a-48b0-a09b-de1fc7383d0c}</Project>
+      <Name>WXQuestionnaire.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WXQuestionnaire.Model\WXQuestionnaire.Model.csproj">
+      <Project>{8e65a5ae-2bf3-4fe1-8932-f292c30e1948}</Project>
+      <Name>WXQuestionnaire.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WXQuestionnaire.Tool\WXQuestionnaire.Tool.csproj">
+      <Project>{db90424a-eb96-4ea8-9436-f37271c31f0e}</Project>
+      <Name>WXQuestionnaire.Tool</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Infrastructure\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
