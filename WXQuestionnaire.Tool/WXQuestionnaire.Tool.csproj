@@ -52,6 +52,7 @@
     <Compile Include="WXUtil.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="log4net.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

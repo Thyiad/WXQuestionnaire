@@ -14,6 +14,8 @@ namespace WXQuestionnaire.Tool
 {
     public static class Util
     {
+        private static readonly log4net.ILog loginfo = log4net.LogManager.GetLogger("loginfo");
+        private static readonly log4net.ILog logerror = log4net.LogManager.GetLogger("logerror");
         /// <summary>         
         /// 将XmlDocument转化为string   
         /// /// </summary>        
