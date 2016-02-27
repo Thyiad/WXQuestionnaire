@@ -13,7 +13,7 @@ namespace WXQuestionnaire.Web
         {
              bundles.Add(new StyleBundle("~/bundles/commonCSS").Include(
                 "~/Content/bootstrap.css",
-                "~/Content/css/font-awesome.min.css"
+                "~/css/font-awesome.min.css"
                 ));
             bundles.Add(new ScriptBundle("~/bundles/commonJS").Include(
                 "~/Scripts/jquery-{version}.js"
@@ -21,11 +21,16 @@ namespace WXQuestionnaire.Web
 
             bundles.Add(new StyleBundle("~/bundles/commonAdminCSS").Include(
                 "~/Content/bootstrap.css",
-                "~/Content/css/font-awesome.min.css"
+                "~/css/font-awesome.min.css",
+                "~/Content/admin/css/components.css"
                 ));
             bundles.Add(new ScriptBundle("~/bundles/commonAdminJS").Include(
-                "~/Scripts/jquery-{version}.js"
+                "~/Content/admin/js/jquery-1.11.0.min.js",
+                "~/Content/admin/js/jquery-migrate-1.2.1.min.js"
                 ));
+            bundles.Add(new ScriptBundle("~/bundles/metronicJS").Include(
+               "~/Content/admin/js/metronic.js"
+               ));
         }
     }
 }

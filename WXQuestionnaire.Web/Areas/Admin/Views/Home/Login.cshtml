@@ -1,56 +1,103 @@
 ﻿@model WXQuestionnaire.Model.Admin.LoginVM
 @{
     ViewBag.Title = "管理员登录";
+    Layout = null;
 }
 
-@section styles{
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
+    @Styles.Render("~/bundles/commonAdminCSS")
+    @Scripts.Render("~/bundles/commonAdminJS")
+    <link href="/Content/admin/css/login.css" rel="stylesheet" />
     <style type="text/css">
-        #loginBox {
-            max-width:400px;
-            margin:auto;
+        .field-validation-error {
+            color: #a94442;
+        }
+
+        .validation-summary-errors ul {
+            padding-left: 0;
+            margin-bottom: 0;
+        }
+
+        .validation-summary-errors li {
+            list-style: none;
+        }
+
+        .login .content .input-icon {
+            /*border-left: 2px solid #2474f6 !important;*/
         }
     </style>
-}
-
-
-
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-
-    <div id="loginBox" class="panel panel-default">
-        <div class="panel-heading">
-            <h4>管理员登录</h4>
-        </div>
-        <div class="panel-body">
-            @Html.ValidationSummary(true, "", new { @class="text-danger"});
-            <div class="form-group">
-                @Html.LabelFor(model => model.Account, new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.TextBoxFor(model => model.Account, new { @class = "form-control" })
-                    @Html.ValidationMessageFor(m => m.Account, "", new { @class = "text-danger" })
-                </div>
+</head>
+<body class="login">
+    <div class="content">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <h3 class="form-title">管理员登陆</h3>
+            <div class="alert alert-danger display-hide">
+                <button class="close" data-close="alert"></button>
+                <span>
+                    @Html.ValidationSummary()
+                </span>
             </div>
             <div class="form-group">
-                @Html.LabelFor(model => model.Password, new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.TextBoxFor(model => model.Password, new { @class = "form-control" })
-                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
+                @Html.LabelFor(m => m.Account, new { @class = "control-label visible-ie8 visible-ie9" })
+                <div class="input-icon">
+                    <i class="fa fa-user"></i>
+                    @Html.TextBoxFor(m => m.Account, new { @class = "form-control placeholder-no-fix", autocomplete = "off", placeholder = "账号", required = "", data_validation_required_message = "请输入账号" })
+                    @Html.ValidationMessageFor(m => m.Account, "", new { @class = "help-block" })
                 </div>
+
             </div>
             <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="登陆" class="btn btn-default btn-block" />
+                @Html.LabelFor(m => m.Password, new { @class = "control-label visible-ie8 visible-ie9" })
+                <div class="input-icon">
+                    <i class="fa fa-lock"></i>
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control placeholder-no-fix", autocomplete = "off", placeholder = "密码", required = "", data_validation_required_message = "请输入密码" })
                 </div>
+                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "help-block" })
             </div>
-        </div>
+            <div class="form-actions">
+                <label class="checkbox">
+                    @Html.CheckBoxFor(m => m.RememberMe)
+                    @Html.LabelFor(m => m.RememberMe)
+                </label>
+                <button type="submit" class="btn blue pull-right">
+                    登陆
+                    <i class="m-icon-swapright m-icon-white"></i>
+                </button>
+            </div>
+        }
     </div>
-   
-}
-
-@section scripts{
+    <div class="copyright">
+        2016 &copy; Thyiad All Rights Reserved
+    </div>
+    <script src="/Content/admin/plugins/backstretch/jquery.backstretch.min.js"></script>
+    <script src="~/Scripts/jqBootstrapValidation.js"></script>
+    @Scripts.Render("~/bundles/metronicJS")
     <script type="text/javascript">
-        $("#loginBox").css("margin-top",(#(window).height()-$('#loginBox').height())/2);
+        var errorText = $(".validation-summary-errors").text();
+        if (errorText) {
+            $('.alert').css('display', 'block');
+        }
+        $(".content").css("margin-top", ($(window).height() - $('.content').height()) / 3);
+        $(":text,:password").jqBootstrapValidation();
+        $.backstretch([
+        "/Content/admin/img/bg/1.jpg",
+        "/Content/admin/img/bg/2.jpg",
+        "/Content/admin/img/bg/3.jpg",
+        "/Content/admin/img/bg/4.jpg"
+        ], {
+            fade: 1000,
+            duration: 8000
+        }
+    );
     </script>
-}
-
+</body>
+</html>

@@ -17,12 +17,15 @@ namespace WXQuestionnaire.Web.Areas.Admin.Controllers
         [AdminAuthentication]
         public ActionResult Index()
         {
+            ViewBag.AdminName = AdminService.CurrrentAdmin.Name;
             return View();
         }
 
         [HttpGet]
         public ActionResult Login()
         {
+            if (AdminService.CurrrentAdmin != null)
+                return RedirectToAction("Index");
             return View();
         }
 
@@ -46,12 +49,12 @@ namespace WXQuestionnaire.Web.Areas.Admin.Controllers
                     admin.LoginTime = DateTime.Now;
                     admin.LoginIP = Request.UserHostAddress;
                     _adminService.UpdateAdmin(admin);
-                    AdminService.CurrrentAdmin = admin;
+                    AdminService.SetCurrentAdmin(admin,loginVM.RememberMe);
                     string returnUrl = Request.QueryString["returnUrl"];
                     if (!string.IsNullOrEmpty(returnUrl))
-                        Redirect(returnUrl);
+                        return Redirect(returnUrl);
                     else
-                        RedirectToAction("Index");
+                        return RedirectToAction("Index");
                 }
             }
 

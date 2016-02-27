@@ -16,6 +16,8 @@ namespace WXQuestionnaire.Web.Controllers
         // GET: Home
         public ActionResult Index()
         {
+            LogHelper.Debug("Yes, log debug");
+            LogHelper.Error(new Exception("自定义错误"));
             return View();
         }
 
@@ -34,7 +36,7 @@ namespace WXQuestionnaire.Web.Controllers
             List<string> strList = new List<string>() { TOKEN, timestamp, nonce };
             strList.Sort();
             var result = string.Join("", strList.ToArray());
-            var hashResult = WXQuestionnaire.Tool.Util.SHA1Encrypt(result);
+            var hashResult = WXQuestionnaire.Tool.EncryptUtil.SHA1Encrypt(result);
 
             if (hashResult == signature)
                 return Content(echostr);
@@ -69,11 +71,11 @@ namespace WXQuestionnaire.Web.Controllers
             outDoc.Load(tpl_txt);
             outDoc.SelectSingleNode("xml").SelectSingleNode(WXUtil.WXConstant.Key_ToUserName).InnerText = frm;
             outDoc.SelectSingleNode("xml").SelectSingleNode(WXUtil.WXConstant.KEY_FromUserName).InnerText = to;
-            outDoc.SelectSingleNode("xml").SelectSingleNode(WXUtil.WXConstant.KEY_CreateTime).InnerText = Util.ConvertDateTimeInt(DateTime.Now).ToString();
+            outDoc.SelectSingleNode("xml").SelectSingleNode(WXUtil.WXConstant.KEY_CreateTime).InnerText = DateUtil.ConvertDateTimeInt(DateTime.Now).ToString();
             outDoc.SelectSingleNode("xml").SelectSingleNode(WXUtil.WXConstant.KEY_MsgType).InnerText = WXUtil.WXConstant.MsgType_Text;
             outDoc.SelectSingleNode("xml").SelectSingleNode(WXUtil.WXConstant.KEY_Content).InnerText = Util.GetTuLingReply(con);
 
-            string outStr = Util.ConvertXmlToString(outDoc);
+            string outStr = XmlUtil.ConvertXmlToString(outDoc);
 
             return Content(outStr);
         }

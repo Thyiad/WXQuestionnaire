@@ -48,9 +48,6 @@
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
-    <Reference Include="log4net">
-      <HintPath>..\packages\log4net.2.0.5\lib\net45-full\log4net.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -110,8 +107,136 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap-theme.css" />
-    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\admin\css\components.css" />
+    <Content Include="Content\admin\css\login.css" />
+    <Content Include="Content\admin\img\accordion-plusminus.png" />
+    <Content Include="Content\admin\img\ajax-loading.gif" />
+    <Content Include="Content\admin\img\ajax-modal-loading.gif" />
+    <Content Include="Content\admin\img\arrow-down.png" />
+    <Content Include="Content\admin\img\avatar.png" />
+    <Content Include="Content\admin\img\avatar1.jpg" />
+    <Content Include="Content\admin\img\avatar10.jpg" />
+    <Content Include="Content\admin\img\avatar11.jpg" />
+    <Content Include="Content\admin\img\avatar1_small.jpg" />
+    <Content Include="Content\admin\img\avatar2.jpg" />
+    <Content Include="Content\admin\img\avatar3.jpg" />
+    <Content Include="Content\admin\img\avatar3_small.jpg" />
+    <Content Include="Content\admin\img\avatar4.jpg" />
+    <Content Include="Content\admin\img\avatar6.jpg" />
+    <Content Include="Content\admin\img\avatar7.jpg" />
+    <Content Include="Content\admin\img\avatar8.jpg" />
+    <Content Include="Content\admin\img\avatar9.jpg" />
+    <Content Include="Content\admin\img\bg-opacity.png" />
+    <Content Include="Content\admin\img\bg-white-lock.png" />
+    <Content Include="Content\admin\img\bg-white.png" />
+    <Content Include="Content\admin\img\bg\1.jpg" />
+    <Content Include="Content\admin\img\bg\2.jpg" />
+    <Content Include="Content\admin\img\bg\3.jpg" />
+    <Content Include="Content\admin\img\bg\4.jpg" />
+    <Content Include="Content\admin\img\datatable-row-openclose.png" />
+    <Content Include="Content\admin\img\flags\de.png" />
+    <Content Include="Content\admin\img\flags\es.png" />
+    <Content Include="Content\admin\img\flags\fr.png" />
+    <Content Include="Content\admin\img\flags\ru.png" />
+    <Content Include="Content\admin\img\flags\us.png" />
+    <Content Include="Content\admin\img\hor-menu-red-arrow.png" />
+    <Content Include="Content\admin\img\hor-menu-search-close-white.png" />
+    <Content Include="Content\admin\img\hor-menu-search-close.png" />
+    <Content Include="Content\admin\img\hor-menu-search.jpg" />
+    <Content Include="Content\admin\img\hor-menu-search.png" />
+    <Content Include="Content\admin\img\icon-color-close.png" />
+    <Content Include="Content\admin\img\icon-color.png" />
+    <Content Include="Content\admin\img\icon-img-down.png" />
+    <Content Include="Content\admin\img\icon-img-up.png" />
+    <Content Include="Content\admin\img\inbox-nav-arrow-blue.png" />
+    <Content Include="Content\admin\img\input-spinner.gif" />
+    <Content Include="Content\admin\img\loading-spinner-grey.gif" />
+    <Content Include="Content\admin\img\loading.gif" />
+    <Content Include="Content\admin\img\logo-big.png" />
+    <Content Include="Content\admin\img\logo.png" />
+    <Content Include="Content\admin\img\menu-toggler.png" />
+    <Content Include="Content\admin\img\overlay-icon.png" />
+    <Content Include="Content\admin\img\photo1.jpg" />
+    <Content Include="Content\admin\img\photo2.jpg" />
+    <Content Include="Content\admin\img\portlet-collapse-icon-white.png" />
+    <Content Include="Content\admin\img\portlet-collapse-icon.png" />
+    <Content Include="Content\admin\img\portlet-config-icon-white.png" />
+    <Content Include="Content\admin\img\portlet-config-icon.png" />
+    <Content Include="Content\admin\img\portlet-expand-icon-white.png" />
+    <Content Include="Content\admin\img\portlet-expand-icon.png" />
+    <Content Include="Content\admin\img\portlet-reload-icon-white.png" />
+    <Content Include="Content\admin\img\portlet-reload-icon.png" />
+    <Content Include="Content\admin\img\portlet-remove-icon-white.png" />
+    <Content Include="Content\admin\img\portlet-remove-icon.png" />
+    <Content Include="Content\admin\img\remove-icon-small.png" />
+    <Content Include="Content\admin\img\search-icon-blue.png" />
+    <Content Include="Content\admin\img\search-icon-brown.png" />
+    <Content Include="Content\admin\img\search-icon-purple.png" />
+    <Content Include="Content\admin\img\search-icon-red.png" />
+    <Content Include="Content\admin\img\search-icon-white.png" />
+    <Content Include="Content\admin\img\search-icon.png" />
+    <Content Include="Content\admin\img\select-caret.png" />
+    <Content Include="Content\admin\img\sidebar-menu-arrow-green-right.png" />
+    <Content Include="Content\admin\img\sidebar-menu-arrow-green.png" />
+    <Content Include="Content\admin\img\sidebar-menu-arrow-reverse.png" />
+    <Content Include="Content\admin\img\sidebar-menu-arrow-right.png" />
+    <Content Include="Content\admin\img\sidebar-menu-arrow-rtl.png" />
+    <Content Include="Content\admin\img\sidebar-menu-arrow.png" />
+    <Content Include="Content\admin\img\sidebar-search-close-blue.png" />
+    <Content Include="Content\admin\img\sidebar-search-close-brown.png" />
+    <Content Include="Content\admin\img\sidebar-search-close-light.png" />
+    <Content Include="Content\admin\img\sidebar-search-close-purple.png" />
+    <Content Include="Content\admin\img\sidebar-search-close.png" />
+    <Content Include="Content\admin\img\sidebar-toggler-blue.jpg" />
+    <Content Include="Content\admin\img\sidebar-toggler-brown.jpg" />
+    <Content Include="Content\admin\img\sidebar-toggler-light.jpg" />
+    <Content Include="Content\admin\img\sidebar-toggler-purple.jpg" />
+    <Content Include="Content\admin\img\sidebar-toggler.jpg" />
+    <Content Include="Content\admin\img\sidebar-toggler.png" />
+    <Content Include="Content\admin\img\sidebar_inline_toggler_icon_default.jpg" />
+    <Content Include="Content\admin\img\sidebar_toggler_icon_default.png" />
+    <Content Include="Content\admin\img\social\aboutme.png" />
+    <Content Include="Content\admin\img\social\amazon.png" />
+    <Content Include="Content\admin\img\social\behance.png" />
+    <Content Include="Content\admin\img\social\blogger.png" />
+    <Content Include="Content\admin\img\social\deviantart.png" />
+    <Content Include="Content\admin\img\social\dribbble.png" />
+    <Content Include="Content\admin\img\social\dropbox.png" />
+    <Content Include="Content\admin\img\social\evernote.png" />
+    <Content Include="Content\admin\img\social\flickr.png" />
+    <Content Include="Content\admin\img\social\forrst.png" />
+    <Content Include="Content\admin\img\social\foursquare.png" />
+    <Content Include="Content\admin\img\social\github.png" />
+    <Content Include="Content\admin\img\social\googleplus.png" />
+    <Content Include="Content\admin\img\social\gravatar.png" />
+    <Content Include="Content\admin\img\social\instagram.png" />
+    <Content Include="Content\admin\img\social\jolicloud.png" />
+    <Content Include="Content\admin\img\social\klout.png" />
+    <Content Include="Content\admin\img\social\last-fm.png" />
+    <Content Include="Content\admin\img\social\linkedin.png" />
+    <Content Include="Content\admin\img\social\myspace.png" />
+    <Content Include="Content\admin\img\social\picasa.png" />
+    <Content Include="Content\admin\img\social\pintrest.png" />
+    <Content Include="Content\admin\img\social\quora.png" />
+    <Content Include="Content\admin\img\social\reddit.png" />
+    <Content Include="Content\admin\img\social\rss.png" />
+    <Content Include="Content\admin\img\social\skype.png" />
+    <Content Include="Content\admin\img\social\spotify.png" />
+    <Content Include="Content\admin\img\social\stumbleupon.png" />
+    <Content Include="Content\admin\img\social\tumblr.png" />
+    <Content Include="Content\admin\img\social\twitter.png" />
+    <Content Include="Content\admin\img\social\vimeo.png" />
+    <Content Include="Content\admin\img\social\vk.png" />
+    <Content Include="Content\admin\img\social\wordpress.png" />
+    <Content Include="Content\admin\img\social\xing.png" />
+    <Content Include="Content\admin\img\social\yahoo.png" />
+    <Content Include="Content\admin\img\social\youtube.png" />
+    <Content Include="Content\admin\img\syncfusion-icons-white.png" />
+    <Content Include="Content\admin\img\syncfusion-icons.png" />
+    <Content Include="Content\admin\js\jquery-1.11.0.min.js" />
+    <Content Include="Content\admin\js\jquery-migrate-1.2.1.min.js" />
+    <Content Include="Content\admin\js\metronic.js" />
+    <Content Include="Content\admin\plugins\backstretch\jquery.backstretch.min.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
@@ -125,10 +250,11 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\bootstrap-theme.min.css.map" />
-    <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.min.css.map" />
     <Content Include="Content\bootstrap.css.map" />
+    <Content Include="img\bg-white-lock.png" />
+    <Content Include="img\syncfusion-icons-white.png" />
+    <Content Include="img\syncfusion-icons.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="fonts\fontawesome-webfont.woff2" />
@@ -142,6 +268,7 @@
     <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Home\Login.cshtml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
+    <Content Include="Scripts\jqBootstrapValidation.js" />
     <Content Include="Scripts\jquery-2.2.0.js" />
     <Content Include="Scripts\jquery-2.2.0.min.js" />
     <Content Include="Web.config" />
@@ -176,6 +303,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Data\Log\" />
     <Folder Include="Infrastructure\" />
   </ItemGroup>
   <ItemGroup>

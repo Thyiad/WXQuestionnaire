@@ -14,63 +14,7 @@ namespace WXQuestionnaire.Tool
 {
     public static class Util
     {
-        private static readonly log4net.ILog loginfo = log4net.LogManager.GetLogger("loginfo");
-        private static readonly log4net.ILog logerror = log4net.LogManager.GetLogger("logerror");
-        /// <summary>         
-        /// 将XmlDocument转化为string   
-        /// /// </summary>        
-        /// /// <param name="xmlDoc"></param>    
-        /// /// <returns></returns>     
-        public static string ConvertXmlToString(XmlDocument xmlDoc)
-        {
-            MemoryStream stream = new MemoryStream();
-            XmlTextWriter writer = new XmlTextWriter(stream, null);
-            writer.Formatting = Formatting.Indented; xmlDoc.Save(writer);
-            StreamReader sr = new StreamReader(stream, System.Text.Encoding.UTF8);
-            stream.Position = 0;
-            string xmlString = sr.ReadToEnd();
-            sr.Close();
-            stream.Close();
-            return xmlString;
-        }   
 
-        public static string SHA1Encrypt(string EncryptText)
-        {
-            byte[] StrRes = Encoding.Default.GetBytes(EncryptText);
-            SHA1CryptoServiceProvider mySHA = new SHA1CryptoServiceProvider();
-            StrRes = mySHA.ComputeHash(StrRes);
-            StringBuilder EnText = new StringBuilder();
-            foreach (byte Byte in StrRes)
-            {
-                EnText.AppendFormat("{0:x2}", Byte);
-            }
-            return EnText.ToString();
-        }
-
-        /// <summary>  
-        /// 时间戳转为C#格式时间  
-        /// </summary>  
-        /// <param name="timeStamp">Unix时间戳格式</param>  
-        /// <returns>C#格式时间</returns>  
-        public static DateTime GetTime(string timeStamp)
-        {
-            DateTime dtStart = TimeZone.CurrentTimeZone.ToLocalTime(new DateTime(1970, 1, 1));
-            long lTime = long.Parse(timeStamp + "0000000");
-            TimeSpan toNow = new TimeSpan(lTime);
-            return dtStart.Add(toNow);
-        }
-
-
-        /// <summary>  
-        /// DateTime时间格式转换为Unix时间戳格式  
-        /// </summary>  
-        /// <param name="time"> DateTime时间格式</param>  
-        /// <returns>Unix时间戳格式</returns>  
-        public static int ConvertDateTimeInt(System.DateTime time)
-        {
-            System.DateTime startTime = TimeZone.CurrentTimeZone.ToLocalTime(new System.DateTime(1970, 1, 1));
-            return (int)(time - startTime).TotalSeconds;
-        }
 
         public static string GetTuLingReply(string question) 
         {

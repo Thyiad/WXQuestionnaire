@@ -9,7 +9,8 @@
     @Scripts.Render("~/bundles/commonAdminJS")
 </head>
 <body>
-   @RenderBody()
-   @RenderSection("scripts", false)
+    @RenderBody()
+    @Scripts.Render("~/bundles/metronicJS")
+    @RenderSection("scripts", false)
 </body>
 </html>

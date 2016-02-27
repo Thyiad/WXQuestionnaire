@@ -1,0 +1,16 @@
+2016-02-27 14:43:05,283 [6] ERROR logerror [(null)] - 自定义错误
+System.Exception: 自定义错误
+2016-02-27 15:56:19,124 [6] ERROR logerror [(null)] - 自定义错误
+System.Exception: 自定义错误
+2016-02-27 16:00:44,863 [6] ERROR logerror [(null)] - 自定义错误
+System.Exception: 自定义错误
+2016-02-27 16:03:33,068 [6] ERROR logerror [(null)] - 自定义错误
+System.Exception: 自定义错误
+2016-02-27 18:31:29,776 [38] ERROR logerror [(null)] - 自定义错误
+System.Exception: 自定义错误
+2016-02-27 20:43:44,779 [16] ERROR logerror [(null)] - 自定义错误
+System.Exception: 自定义错误
+2016-02-27 20:44:09,978 [45] ERROR logerror [(null)] - 自定义错误
+System.Exception: 自定义错误
+2016-02-27 20:55:50,151 [53] ERROR logerror [(null)] - 自定义错误
+System.Exception: 自定义错误
