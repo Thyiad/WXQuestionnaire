@@ -14,8 +14,6 @@ namespace WXQuestionnaire.Tool
 {
     public static class Util
     {
-
-
         public static string GetTuLingReply(string question) 
         {
             if (question.Length> 30)    // 不能大于30个字符串

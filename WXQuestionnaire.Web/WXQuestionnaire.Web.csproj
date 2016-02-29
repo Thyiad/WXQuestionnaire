@@ -280,6 +280,7 @@
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Infrastructure\AdminAuthenticationAttribute.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SCController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -294,6 +295,8 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\AuthWX.cshtml" />
     <Content Include="Views\Home\Other.cshtml" />
+    <Content Include="Views\SC\Lottery.cshtml" />
+    <Content Include="Views\SC\Chartlet.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

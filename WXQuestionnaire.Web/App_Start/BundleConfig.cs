@@ -12,8 +12,10 @@ namespace WXQuestionnaire.Web
         public static void RegisterBundles(BundleCollection bundles)
         {
              bundles.Add(new StyleBundle("~/bundles/commonCSS").Include(
+                 // debug
                 "~/Content/bootstrap.css",
                 "~/css/font-awesome.min.css"
+                // release
                 ));
             bundles.Add(new ScriptBundle("~/bundles/commonJS").Include(
                 "~/Scripts/jquery-{version}.js"
