@@ -1,15 +1,20 @@
 ﻿<!DOCTYPE html>
 <html lang="zh-cn">
 <head>
-    <meta charset="utf-8" http-equiv="X-UA-Compatible" content="IE=Edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8" http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
     <title>@ViewBag.Title</title>
-    @Styles.Render("~/bundles/commonCSS")
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm.css">
     @RenderSection("styles", false)
-    @Scripts.Render("~/bundles/commonJS")
 </head>
 <body>
-   @RenderBody()
+    <div class="page-group">
+        @RenderBody()
+    </div>
+    <script type='text/javascript' src='//g.alicdn.com/sj/lib/zepto/zepto.js' charset='utf-8'></script>
+    <script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm.js' charset='utf-8'></script>
     @RenderSection("scripts", false)
 </body>
 </html>

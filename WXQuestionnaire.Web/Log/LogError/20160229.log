@@ -1,0 +1,6 @@
+2016-02-29 22:03:36,472 [6] ERROR logerror [(null)] - 自定义错误
+System.Exception: 自定义错误
+2016-02-29 22:03:50,828 [12] ERROR logerror [(null)] - 自定义错误
+System.Exception: 自定义错误
+2016-02-29 22:56:25,122 [9] ERROR logerror [(null)] - 自定义错误
+System.Exception: 自定义错误

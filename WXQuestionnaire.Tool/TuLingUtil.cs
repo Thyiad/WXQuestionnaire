@@ -12,11 +12,11 @@ using System.Xml;
 
 namespace WXQuestionnaire.Tool
 {
-    public static class Util
+    public static class TuLingUtil
     {
-        public static string GetTuLingReply(string question) 
+        public static string GetReply(string question)
         {
-            if (question.Length> 30)    // 不能大于30个字符串
+            if (question.Length > 30)    // 不能大于30个字符串
             {
                 question = question.Substring(0, 30);
             }
@@ -28,12 +28,12 @@ namespace WXQuestionnaire.Tool
                 String info = question;
 
                 UTF8Encoding encoding = new UTF8Encoding();
-                  string postData="key="+key;
-                  postData += ("&info="+info);
-                  byte[] data = encoding.GetBytes(postData);
+                string postData = "key=" + key;
+                postData += ("&info=" + info);
+                byte[] data = encoding.GetBytes(postData);
 
-                  HttpWebRequest myRequest = (HttpWebRequest)HttpWebRequest.Create("http://www.tuling123.com/openapi/api");
-                  myRequest.Method = "POST";
+                HttpWebRequest myRequest = (HttpWebRequest)HttpWebRequest.Create("http://www.tuling123.com/openapi/api");
+                myRequest.Method = "POST";
                 myRequest.ContentType = "application/x-www-form-urlencoded";
                 myRequest.ContentLength = data.Length;
                 Stream newStream = myRequest.GetRequestStream();

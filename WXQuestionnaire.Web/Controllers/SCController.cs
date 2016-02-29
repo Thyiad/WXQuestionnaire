@@ -20,6 +20,10 @@ namespace WXQuestionnaire.Web.Controllers
             return View();
         }
 
+        /// <summary>
+        /// 图片及寄语页面
+        /// </summary>
+        /// <returns></returns>
         public ActionResult Chartlet()
         {
             return View();

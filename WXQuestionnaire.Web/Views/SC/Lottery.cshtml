@@ -1,7 +1,49 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Lottery";
 }
 
-<h2>Lottery</h2>
+@section styles{
+    <style type="text/css">
+        .cell {
+            margin: 5px;
+            border: 2px solid #0894ec;
+            text-align: center;
+        }
+    </style>
+}
+
+<div class="page">
+    <header class="bar bar-nav">
+        <h1 class="title">玩趣</h1>
+    </header>
+    <div class="content">
+        <h3 style="margin-bottom:5px">游戏说明：</h3>
+        点击一个你的幸运数字，有机会赢取丰厚的奖品
+        <div style="margin:35px 20px;">
+            <div class="row">
+                <div class="col-33">
+                    <div class="cell">1</div>
+                </div>
+                <div class="col-33">
+                    <div class="cell">2</div>
+                </div>
+                <div class="col-33"><div class="cell">3</div></div>
+            </div>
+            <div class="row">
+                <div class="col-33"><div class="cell">4</div></div>
+                <div class="col-33"><div class="cell">5</div></div>
+                <div class="col-33"><div class="cell">6</div></div>
+            </div>
+            <div class="row">
+                <div class="col-33"><div class="cell">7</div></div>
+                <div class="col-33"><div class="cell">8</div></div>
+                <div class="col-33"><div class="cell">9</div></div>
+            </div>
+            <div class="content-block">
+                <p><a href="#" class="button button-big">抽奖</a></p>
+            </div>
+        </div>
+        
+    </div>
+</div>
 

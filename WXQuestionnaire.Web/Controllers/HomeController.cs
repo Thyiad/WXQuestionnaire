@@ -16,12 +16,13 @@ namespace WXQuestionnaire.Web.Controllers
         // GET: Home
         public ActionResult Index()
         {
+            string token = WXUtil.WXAccessTokenManager.GetToken();
             LogHelper.Debug("Yes, log debug");
             LogHelper.Error(new Exception("自定义错误"));
             return View();
         }
 
-        
+
         [HttpGet]
         /// <summary>
         /// 微信验证，参考URL：http://mp.weixin.qq.com/wiki/8/f9a0b8382e0b77d87b3bcc1ce6fbc104.html
@@ -31,7 +32,7 @@ namespace WXQuestionnaire.Web.Controllers
         /// <param name="nonce"></param>
         /// <param name="echostr"></param>
         /// <returns></returns>
-        public ContentResult AuthWX(string signature,string timestamp, string nonce, string echostr)
+        public ContentResult AuthWX(string signature, string timestamp, string nonce, string echostr)
         {
             List<string> strList = new List<string>() { TOKEN, timestamp, nonce };
             strList.Sort();
@@ -47,37 +48,13 @@ namespace WXQuestionnaire.Web.Controllers
         [HttpPost]
         public ActionResult AuthWX()
         {
-            var doc = WXUtil.GetMsgXML();
-            var mType = WXUtil.GetContentFromWX(doc,WXUtil.WXConstant.KEY_MsgType);
-            if (mType == WXUtil.WXConstant.MsgType_Text)
-                return ReplyTxtMsg(doc);
-
-            return Content("success");   // success 或空字符串，微信不会提示服务器无法响应
-        }
-        public ActionResult Other() {
-            return View();
+            var msg = WXUtil.GetReplyMsg();
+            return Content(msg);
         }
 
-        private ActionResult ReplyTxtMsg(XmlDocument doc) 
+        public ActionResult Other()
         {
-            var con = WXUtil.GetContentFromWX(doc, WXUtil.WXConstant.KEY_Content);
-            var frm = WXUtil.GetContentFromWX(doc, WXUtil.WXConstant.KEY_FromUserName);
-            var to = WXUtil.GetContentFromWX(doc, WXUtil.WXConstant.Key_ToUserName);
-            var cre = WXUtil.GetContentFromWX(doc, WXUtil.WXConstant.KEY_CreateTime);
-            var msgId = WXUtil.GetContentFromWX(doc, WXUtil.WXConstant.KEY_MsgId);
-
-            string tpl_txt = Server.MapPath(WXUtil.WXConstant.TPL_ReplyTxt);
-            var outDoc = new XmlDocument();
-            outDoc.Load(tpl_txt);
-            outDoc.SelectSingleNode("xml").SelectSingleNode(WXUtil.WXConstant.Key_ToUserName).InnerText = frm;
-            outDoc.SelectSingleNode("xml").SelectSingleNode(WXUtil.WXConstant.KEY_FromUserName).InnerText = to;
-            outDoc.SelectSingleNode("xml").SelectSingleNode(WXUtil.WXConstant.KEY_CreateTime).InnerText = DateUtil.ConvertDateTimeInt(DateTime.Now).ToString();
-            outDoc.SelectSingleNode("xml").SelectSingleNode(WXUtil.WXConstant.KEY_MsgType).InnerText = WXUtil.WXConstant.MsgType_Text;
-            outDoc.SelectSingleNode("xml").SelectSingleNode(WXUtil.WXConstant.KEY_Content).InnerText = Util.GetTuLingReply(con);
-
-            string outStr = XmlUtil.ConvertXmlToString(outDoc);
-
-            return Content(outStr);
+            return View();
         }
     }
 }
