@@ -242,6 +242,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Content\sm.css" />
     <Content Include="Scripts\sm.js" />
+    <Content Include="Scripts\zepto_touch.js" />
     <Content Include="Scripts\zepto.js" />
     <Content Include="css\font-awesome.css" />
     <Content Include="css\font-awesome.min.css" />

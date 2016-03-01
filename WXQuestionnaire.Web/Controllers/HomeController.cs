@@ -16,9 +16,6 @@ namespace WXQuestionnaire.Web.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            string token = WXUtil.WXAccessTokenManager.GetToken();
-            LogHelper.Debug("Yes, log debug");
-            LogHelper.Error(new Exception("自定义错误"));
             return View();
         }
 

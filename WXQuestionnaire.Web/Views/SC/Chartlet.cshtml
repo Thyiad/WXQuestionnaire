@@ -1,7 +1,114 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Chartlet";
 }
 
-<h2>Chartlet</h2>
+@section styles{
+    <style type="text/css">
+        .button[disabled] {
+            background-color: #c9c9c9;
+            color: white;
+            border: none;
+        }
 
+        #img, #sendWord {
+            border: 1px solid #0894ec;
+            text-align: center;
+            height: 150px;
+        }
+
+        #sendWord {
+            margin-top: 15px;
+            background-color: #efeff4;
+            /*height:100px;*/
+        }
+
+        #iconPic {
+            font-size: 2.5rem;
+            color: #0894ec;
+            line-height: 150px;
+        }
+
+        .content {
+            padding: 0 10px;
+        }
+    </style>
+}
+
+<div class="page">
+    <header class="bar bar-nav">
+        <h1 class="title">玩趣</h1>
+    </header>
+    <div class="content">
+        <h3 style="margin-bottom:5px">游戏说明：</h3>
+        上传一张有关SU16的照片，写一段活动寄语，完成后点击确认分享到朋友圈
+        <div style="margin:35px 20px;">
+            <div id="img">
+                <img id="imgShow" src="" alt="" style="width:auto;height:148px;display:none;" />
+                <span id="iconPic" class="icon icon-picture"></span>
+            </div>
+            <textarea id="sendWord" style="width:100%" placeholder="请输入寄语"></textarea>
+        </div>
+        <div class="content-block">
+            <p><a id="btnSend" href="#" class="button button-big" disabled>确&nbsp;&nbsp;认</a></p>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script>
+        $.init();
+        wx.error(function (res) {
+            console.log(res);
+        });
+        wx.config({
+            debug: @ViewBag.JsSdkConfig.Debug.ToString().ToLowerInvariant(),
+            appId:'@ViewBag.JsSdkConfig.AppId',
+            timestamp:'@ViewBag.JsSdkConfig.TimeStamp',
+            nonceStr:'@ViewBag.JsSdkConfig.NonceStr',
+            signature:'@ViewBag.JsSdkConfig.Signature',
+            jsApiList:[@MvcHtmlString.Create(ViewBag.JsSdkConfig.JsApiList)]
+        });
+        wx.ready(function () {
+            $("#img").on('tap',function(){
+                wx.chooseImage({
+                    count: 1, // 默认9
+                    sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+                    sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+                    success: function (res) {
+                        var localIds = res.localIds; // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
+                        var $imgShow = $('#imgShow');
+                        $imgShow.attr('src',localIds[0]);
+                        var show =$imgShow.css('display');
+                        if (show=='none') {
+                            $('#iconPic').hide();
+                            $imgShow.show();
+                        }
+                        resetBtnStatus();
+                    }
+                });
+            });
+        });
+
+        function resetBtnStatus(){
+            var img = $('#imgShow').css('display') !== 'none';
+            var txt = $('#sendWord').val();
+            if (img && txt) {
+                $('#btnSend').removeAttr('disabled');
+            }else{
+                $('#btnSend').attr('disabled','true');
+            }
+        }
+
+        $("#sendWord").on('keyup',function(){
+            resetBtnStatus();
+        })
+        $('#btnSend').on('tap', function () {
+            var dis = this.getAttribute('disabled');
+            if (dis !== null) {
+                return;
+            }
+            $.toast('submit');
+        });
+    </script>
+}

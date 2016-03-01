@@ -50,6 +50,7 @@
     <Compile Include="DateUtil.cs" />
     <Compile Include="EncryptUtil.cs" />
     <Compile Include="LogHelper.cs" />
+    <Compile Include="StrUtil.cs" />
     <Compile Include="TuLingUtil.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WXUtil.cs" />
