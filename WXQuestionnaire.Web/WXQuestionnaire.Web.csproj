@@ -241,6 +241,8 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\sm.css" />
+    <Content Include="Scripts\html2canvas.js" />
+    <Content Include="Scripts\html2canvas.min.js" />
     <Content Include="Scripts\sm.js" />
     <Content Include="Scripts\zepto_touch.js" />
     <Content Include="Scripts\zepto.js" />
@@ -271,6 +273,9 @@
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Home\Login.cshtml" />
+    <Content Include="Scripts\html2canvas.min.js.map">
+      <DependentUpon>html2canvas.min.js</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\jqBootstrapValidation.js" />
     <Content Include="Scripts\jquery-2.2.0.js" />

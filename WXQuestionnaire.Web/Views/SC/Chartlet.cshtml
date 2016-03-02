@@ -10,12 +10,13 @@
             border: none;
         }
 
-        #img, #sendWord {
+        #imgContainer, #sendWord {
             border: 1px solid #0894ec;
             text-align: center;
-            height: 150px;
         }
-
+        #imgContainer{
+            min-height: 150px;
+        }
         #sendWord {
             margin-top: 15px;
             background-color: #efeff4;
@@ -28,13 +29,13 @@
             line-height: 150px;
         }
 
-        .content {
+        .page1 .content {
             padding: 0 10px;
         }
     </style>
 }
 
-<div class="page">
+<div class="page page-current page1">
     <header class="bar bar-nav">
         <h1 class="title">玩趣</h1>
     </header>
@@ -42,8 +43,8 @@
         <h3 style="margin-bottom:5px">游戏说明：</h3>
         上传一张有关SU16的照片，写一段活动寄语，完成后点击确认分享到朋友圈
         <div style="margin:35px 20px;">
-            <div id="img">
-                <img id="imgShow" src="" alt="" style="width:auto;height:148px;display:none;" />
+            <div id="imgContainer">
+                <img id="imgSelect" src="" alt="" style="width:100%;height:auto;display:none;" />
                 <span id="iconPic" class="icon icon-picture"></span>
             </div>
             <textarea id="sendWord" style="width:100%" placeholder="请输入寄语"></textarea>
@@ -58,9 +59,11 @@
     <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
     <script>
         $.init();
+
         wx.error(function (res) {
             console.log(res);
         });
+
         wx.config({
             debug: @ViewBag.JsSdkConfig.Debug.ToString().ToLowerInvariant(),
             appId:'@ViewBag.JsSdkConfig.AppId',
@@ -70,14 +73,14 @@
             jsApiList:[@MvcHtmlString.Create(ViewBag.JsSdkConfig.JsApiList)]
         });
         wx.ready(function () {
-            $("#img").on('tap',function(){
+            $("#imgContainer").on('tap',function(){
                 wx.chooseImage({
                     count: 1, // 默认9
                     sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
                     sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
                     success: function (res) {
                         var localIds = res.localIds; // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
-                        var $imgShow = $('#imgShow');
+                        var $imgShow = $('#imgSelect');
                         $imgShow.attr('src',localIds[0]);
                         var show =$imgShow.css('display');
                         if (show=='none') {
@@ -91,7 +94,7 @@
         });
 
         function resetBtnStatus(){
-            var img = $('#imgShow').css('display') !== 'none';
+            var img = $('#imgSelect').css('display') !== 'none';
             var txt = $('#sendWord').val();
             if (img && txt) {
                 $('#btnSend').removeAttr('disabled');
@@ -104,11 +107,17 @@
             resetBtnStatus();
         })
         $('#btnSend').on('tap', function () {
+            // html2Canvas 在微信内置浏览器不行，操蛋了
+            // QQ浏览器X5内核貌似是基于android 4.2的webkit, 版本号webkit 534, 参考网址：https://www.qianduan.net/qqliu-lan-qi-x5nei-he-wen-ti-hui-zong/
+            // 2016-03-02
             var dis = this.getAttribute('disabled');
             if (dis !== null) {
                 return;
             }
-            $.toast('submit');
+
+            // 上传到微信服务器
+
+            // 将serverID传到后台，下载并生成图片，返回新网址
         });
     </script>
 }

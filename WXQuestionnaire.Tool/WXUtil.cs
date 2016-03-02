@@ -179,7 +179,7 @@ namespace WXQuestionnaire.Tool
             string signature = sha1Str;
             WXJsSdkConfig config = new WXJsSdkConfig()
             {
-                Debug = true,
+                Debug = false,
                 TimeStamp = timestamp,
                 NonceStr = noncestr,
                 Signature = signature,
