@@ -81,6 +81,10 @@
     <Compile Include="Migrations\201602251459289_updateAdmin3.Designer.cs">
       <DependentUpon>201602251459289_updateAdmin3.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201603021314335_add-stat.cs" />
+    <Compile Include="Migrations\201603021314335_add-stat.Designer.cs">
+      <DependentUpon>201603021314335_add-stat.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -110,6 +114,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201602251459289_updateAdmin3.resx">
       <DependentUpon>201602251459289_updateAdmin3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603021314335_add-stat.resx">
+      <DependentUpon>201603021314335_add-stat.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

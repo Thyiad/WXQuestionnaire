@@ -32,7 +32,7 @@ namespace WXQuestionnaire.Tool
 
             public const string MsgType_Text = "text";
 
-            public const string TPL_ReplyTxt = "~/Data/WXTemplate/WXReply_Text.xml";
+            public const string TPL_ReplyTxt = "~/Data/WXTemplates/WXReply_Text.xml";
         }
         #endregion
 

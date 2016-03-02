@@ -59,7 +59,7 @@
             </div>
         </div>
         <div class="content-block">
-            <p><a id="btnLottery" href="#" class="button button-big" disabled >抽&nbsp;&nbsp;奖</a></p>
+            <p><a id="btnLottery" href="#" class="button button-big" disabled>抽&nbsp;&nbsp;奖</a></p>
         </div>
     </div>
 </div>
@@ -74,23 +74,42 @@
             $this.height(w);
             $this.css('line-height', (w - 3) + 'px');
         });
+
         $('#btnLottery').on('tap', function () {
             var dis = this.getAttribute('disabled');
             if (dis !== null) {
                 return;
             }
             // 抽奖，几率2.3%
-            $.showPreloader('抽奖中...')
-            setTimeout(function () {
-                var num = Math.floor(Math.random() * 1000 + 1);
+            $.showPreloader('抽奖中...');
+            var msg = "谢谢参与";
+            var num = Math.floor(Math.random() * 1000 + 1);
+            if (num> 23) {
+                setTimeout(function(){
+                    endWaiting(msg)
+                },1000);
+            }else{
+                $.ajax({
+                    url:'@Url.Action("AddPrizeWinner")',
+                    dataType:"json",
+                    success:function(data){
+                        var ok = data.ok;   // 中奖人数是否超限，上限为8
+                        msg = ok? "恭喜你中奖了" : "谢谢参与";
+                    },
+                    complete:function(){
+                        endWaiting(msg);
+                    }
+                });
+            }
+            // 关闭等待框
+            function endWaiting(msg){
                 $.hidePreloader();
-                var msg = num <= 23 ? "恭喜你中奖了" : "谢谢参与";
                 $.alert(msg, function () {
                     clearActiveCell();
                     resetLotteryBtn();
                 })
-            }, 1000);
-        })
+            }
+        });
         $('#grid').on('tap', '.cell', function () {
             var cell = clearActiveCell();
             if (cell !== this) {

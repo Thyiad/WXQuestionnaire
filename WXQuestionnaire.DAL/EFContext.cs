@@ -19,5 +19,6 @@ namespace WXQuestionnaire.DAL
         }
 
         public DbSet<Admin> Admins { get; set; }
+        public DbSet<Stat> Stats { get; set; }
     }
 }

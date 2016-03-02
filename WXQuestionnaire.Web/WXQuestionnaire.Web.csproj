@@ -241,6 +241,8 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\sm.css" />
+    <Content Include="Data\WXImages\test.jpg" />
+    <Content Include="Data\WXTemplates\WXReply_Text.xml" />
     <Content Include="Scripts\html2canvas.js" />
     <Content Include="Scripts\html2canvas.min.js" />
     <Content Include="Scripts\sm.js" />
@@ -248,7 +250,6 @@
     <Content Include="Scripts\zepto.js" />
     <Content Include="css\font-awesome.css" />
     <Content Include="css\font-awesome.min.css" />
-    <Content Include="Data\WXTemplate\WXReply_Text.xml" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -293,6 +294,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\CustomJsonResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -315,8 +317,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Data\Log\" />
-    <Folder Include="Infrastructure\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WXQuestionnaire.BLL\WXQuestionnaire.BLL.csproj">

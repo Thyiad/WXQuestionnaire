@@ -72,6 +72,7 @@
             signature:'@ViewBag.JsSdkConfig.Signature',
             jsApiList:[@MvcHtmlString.Create(ViewBag.JsSdkConfig.JsApiList)]
         });
+        var imgLocalId = null;
         wx.ready(function () {
             $("#imgContainer").on('tap',function(){
                 wx.chooseImage({
@@ -88,6 +89,7 @@
                             $imgShow.show();
                         }
                         resetBtnStatus();
+                        imgLocalId = localIds[0];
                     }
                 });
             });
@@ -107,6 +109,13 @@
             resetBtnStatus();
         })
         $('#btnSend').on('tap', function () {
+            //window.location.href = "/SC/GetImg";
+            //return;
+            //$.get('/SC/GetImg','',function(data){
+            //    window.location.href = data;
+            //});
+            // window.location.href = "/Content/test.jpg";
+            // return;
             // html2Canvas 在微信内置浏览器不行，操蛋了
             // QQ浏览器X5内核貌似是基于android 4.2的webkit, 版本号webkit 534, 参考网址：https://www.qianduan.net/qqliu-lan-qi-x5nei-he-wen-ti-hui-zong/
             // 2016-03-02
@@ -116,8 +125,16 @@
             }
 
             // 上传到微信服务器
+            wx.uploadImage({
+                localId: imgLocalId, // 需要上传的图片的本地ID，由chooseImage接口获得
+                isShowProgressTips: 1, // 默认为1，显示进度提示
+                success: function (res) {
+                    var serverId = res.serverId; // 返回图片的服务器端ID
 
-            // 将serverID传到后台，下载并生成图片，返回新网址
+                    // 将serverID传到后台，后台下载并生成图片，再发回前台
+                }
+            });
+
         });
     </script>
 }

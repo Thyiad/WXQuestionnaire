@@ -11,6 +11,9 @@ namespace WXQuestionnaire.Model.Admin
     {
         [Key]
         public int ID { get; set; }
+        /// <summary>
+        /// 获奖者总数
+        /// </summary>
         public int PrizeWinnerNum { get; set; }
     }
 }
