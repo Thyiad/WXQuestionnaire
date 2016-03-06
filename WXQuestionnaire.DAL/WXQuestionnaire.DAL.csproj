@@ -85,6 +85,22 @@
     <Compile Include="Migrations\201603021314335_add-stat.Designer.cs">
       <DependentUpon>201603021314335_add-stat.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201603050643073_add-chartlet.cs" />
+    <Compile Include="Migrations\201603050643073_add-chartlet.Designer.cs">
+      <DependentUpon>201603050643073_add-chartlet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603050645032_update-chartlet.cs" />
+    <Compile Include="Migrations\201603050645032_update-chartlet.Designer.cs">
+      <DependentUpon>201603050645032_update-chartlet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603050659389_update-chartlet2.cs" />
+    <Compile Include="Migrations\201603050659389_update-chartlet2.Designer.cs">
+      <DependentUpon>201603050659389_update-chartlet2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603061324436_add-questionaire.cs" />
+    <Compile Include="Migrations\201603061324436_add-questionaire.Designer.cs">
+      <DependentUpon>201603061324436_add-questionaire.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -117,6 +133,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201603021314335_add-stat.resx">
       <DependentUpon>201603021314335_add-stat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603050643073_add-chartlet.resx">
+      <DependentUpon>201603050643073_add-chartlet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603050645032_update-chartlet.resx">
+      <DependentUpon>201603050645032_update-chartlet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603050659389_update-chartlet2.resx">
+      <DependentUpon>201603050659389_update-chartlet2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603061324436_add-questionaire.resx">
+      <DependentUpon>201603061324436_add-questionaire.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

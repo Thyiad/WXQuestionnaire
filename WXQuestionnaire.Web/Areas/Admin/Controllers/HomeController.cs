@@ -60,5 +60,10 @@ namespace WXQuestionnaire.Web.Areas.Admin.Controllers
 
             return View(loginVM);
         }
+
+        public ActionResult Logout() {
+            AdminService.QuitCurrentAdmin();
+            return RedirectToAction("Login");
+        }
     }
 }

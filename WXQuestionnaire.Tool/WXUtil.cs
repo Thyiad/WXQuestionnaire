@@ -199,6 +199,37 @@ namespace WXQuestionnaire.Tool
             return "success";   // success 或空字符串，微信不会提示服务器无法响应
         }
 
+        /// <summary>
+        /// 从微信服务器下载文件
+        /// </summary>
+        /// <param name="serverID">文件ID</param>
+        /// <param name="ext">扩展名</param>
+        /// <returns></returns>
+        public static string DownloadFile(string serverID,string ext) {
+            try
+            {
+                string accessToken = GetAccessToken();
+                string url = string.Format("http://file.api.weixin.qq.com/cgi-bin/media/get?access_token={0}&media_id={1}", accessToken, serverID);
+                HttpWebRequest myRequest = (HttpWebRequest)HttpWebRequest.Create(url);
+                HttpWebResponse myResponse = (HttpWebResponse)myRequest.GetResponse();
+                var stream = myResponse.GetResponseStream();
+
+                string virtualPath = "/Data/WXDownload/" + serverID + ext;
+                string savePath = HttpContext.Current.Server.MapPath(virtualPath);
+                StreamWriter sw = new StreamWriter(savePath);
+                stream.CopyTo(sw.BaseStream);
+                sw.Flush();
+                sw.Close();
+
+                return virtualPath;
+            }
+            catch (Exception ex)
+            {
+                LogHelper.Error(ex);
+                return null;
+            }
+        }
+
         private static XmlDocument GetMsgXML()
         {
             Stream stream = HttpContext.Current.Request.InputStream;

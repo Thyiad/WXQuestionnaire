@@ -43,6 +43,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -53,7 +54,9 @@
   <ItemGroup>
     <Compile Include="Admin\AdminService.cs" />
     <Compile Include="Admin\StatService.cs" />
+    <Compile Include="Chartlet\ChartletService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Questionaire\QuestionaireService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

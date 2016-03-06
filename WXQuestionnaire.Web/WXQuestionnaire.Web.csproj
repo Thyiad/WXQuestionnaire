@@ -108,6 +108,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\admin\css\components.css" />
+    <Content Include="Content\admin\css\theme-darkblue.css" />
+    <Content Include="Content\admin\css\layout.css" />
     <Content Include="Content\admin\css\login.css" />
     <Content Include="Content\admin\img\accordion-plusminus.png" />
     <Content Include="Content\admin\img\ajax-loading.gif" />
@@ -237,15 +239,19 @@
     <Content Include="Content\admin\js\jquery-migrate-1.2.1.min.js" />
     <Content Include="Content\admin\js\metronic.js" />
     <Content Include="Content\admin\plugins\backstretch\jquery.backstretch.min.js" />
+    <Content Include="Content\admin\plugins\bootstrap-hover-dropdown\bootstrap-hover-dropdown.min.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\sm.css" />
-    <Content Include="Data\WXImages\test.jpg" />
+    <Content Include="Data\WXDownload\test.jpg" />
     <Content Include="Data\WXTemplates\WXReply_Text.xml" />
     <Content Include="Scripts\html2canvas.js" />
     <Content Include="Scripts\html2canvas.min.js" />
+    <Content Include="Scripts\questionaire.js" />
     <Content Include="Scripts\sm.js" />
+    <Content Include="Scripts\vue.js" />
+    <Content Include="Scripts\vue.min.js" />
     <Content Include="Scripts\zepto_touch.js" />
     <Content Include="Scripts\zepto.js" />
     <Content Include="css\font-awesome.css" />
@@ -277,6 +283,9 @@
     <Content Include="Scripts\html2canvas.min.js.map">
       <DependentUpon>html2canvas.min.js</DependentUpon>
     </Content>
+    <Content Include="Areas\Admin\Views\Shared\adminLayout.cshtml" />
+    <Content Include="Areas\Admin\Views\Questionaire\QueryStat.cshtml" />
+    <Content Include="Areas\Admin\Views\Questionaire\QueryDetail.cshtml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\jqBootstrapValidation.js" />
     <Content Include="Scripts\jquery-2.2.0.js" />
@@ -288,6 +297,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\QuestionaireController.cs" />
     <Compile Include="Areas\Admin\Infrastructure\AdminAuthenticationAttribute.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SCController.cs" />
@@ -308,6 +318,8 @@
     <Content Include="Views\Home\Other.cshtml" />
     <Content Include="Views\SC\Lottery.cshtml" />
     <Content Include="Views\SC\Chartlet.cshtml" />
+    <Content Include="Views\SC\PreDownloadChartlet.cshtml" />
+    <Content Include="Views\SC\Questionaire.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -317,6 +329,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Data\Chartlets\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WXQuestionnaire.BLL\WXQuestionnaire.BLL.csproj">

@@ -43,7 +43,10 @@
     <Compile Include="Admin\Admin.cs" />
     <Compile Include="Admin\LoginVM.cs" />
     <Compile Include="Admin\Stat.cs" />
+    <Compile Include="Chartlet\Chartlet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Questionaire\QuestionaireDetail.cs" />
+    <Compile Include="Questionaire\Questionaire.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

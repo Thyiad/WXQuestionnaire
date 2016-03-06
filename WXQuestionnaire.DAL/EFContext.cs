@@ -5,6 +5,8 @@ namespace WXQuestionnaire.DAL
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
     using WXQuestionnaire.Model.Admin;
+    using WXQuestionnaire.Model.Chartlet;
+    using WXQuestionnaire.Model.Questionaire;
 
     public partial class EFContext : DbContext
     {
@@ -20,5 +22,7 @@ namespace WXQuestionnaire.DAL
 
         public DbSet<Admin> Admins { get; set; }
         public DbSet<Stat> Stats { get; set; }
+        public DbSet<Chartlet> Chartlets { get; set; }
+        public DbSet<Questionaire> Questionaires { get; set; }
     }
 }

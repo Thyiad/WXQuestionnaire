@@ -1,0 +1,64 @@
+﻿
+@{
+    ViewBag.Title = "QueryDetail";
+    Layout = "~/Areas/Admin/Views/Shared/adminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="portlet box green">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="fa fa-gift"></i>@ViewBag.QuestionaireType.ToString() 问卷详情
+            </div>
+            <div class="tools">
+            </div>
+        </div>
+        <div class="portlet-body">
+            <div class="table-scrollable">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>
+                                #
+                            </th>
+                            <th>
+                                First Name
+                            </th>
+                            <th>
+                                Last Name
+                            </th>
+                            <th>
+                                Username
+                            </th>
+                            <th>
+                                Status
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                1
+                            </td>
+                            <td>
+                                Mark
+                            </td>
+                            <td>
+                                Otto
+                            </td>
+                            <td>
+                                makr124
+                            </td>
+                            <td>
+                                <span class="label label-sm label-success">
+                                    Approved
+                                </span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

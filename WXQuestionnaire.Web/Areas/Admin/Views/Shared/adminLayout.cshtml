@@ -1,0 +1,248 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8" http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/bundles/commonAdminCSS")
+    <link rel="stylesheet" type="text/css" href="~/Content/admin/css/layout.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/admin/css/theme-darkblue.css" />
+    @RenderSection("styles", false)
+    @Scripts.Render("~/bundles/commonAdminJS")
+</head>
+<body class="page-header-fixed page-quick-sidebar-over-content">
+    <div class="page-header navbar navbar-fixed-top">
+        <!-- BEGIN HEADER INNER -->
+        <div class="page-header-inner">
+            <div class="top-menu">
+                <ul class="nav navbar-nav pull-right">
+                    <li class="dropdown dropdown-user">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                            <img alt="" class="img-circle" src="~/Content/admin/img/avatar3_small.jpg">
+                            <span class="username username-hide-on-mobile">
+                                管理员
+                            </span>
+                            <i class="fa fa-angle-down"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="@Url.Action("Logout")">
+                                    <i class="icon-key"></i> Log Out
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix">
+    </div>
+    <div class="page-container">
+        <div class="page-sidebar-wrapper">
+            <div class="page-sidebar navbar-collapse collapse">
+                <ul class="page-sidebar-menu page-sidebar-menu-light page-sidebar-menu-hover-submenu" data-auto-scroll="true" data-slide-speed="200">
+                    <li class="sidebar-toggler-wrapper">
+                        <div class="sidebar-toggler">
+                        </div>
+                    </li>
+                    <li class="start active open">
+                        <a href="javascript:;">
+                            <i class="icon-home"></i>
+                            <span class="title">店长D1</span>
+                            <span class="selected"></span>
+                            <span class="arrow open"></span>
+                        </a>
+                        <ul class="sub-menu">
+                            <li>
+                                <a href="@Url.Action("QueryStat", "Questionaire", new { qtype =11})">
+                                    <i class="icon-bar-chart"></i>
+                                    问卷统计
+                                </a>
+                            </li>
+                            <li class="active">
+                                <a href="@Url.Action("QueryDetail", "Questionaire", new { qtype =11})">
+                                    <i class="icon-bulb"></i>
+                                    问卷详情
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="start  ">
+                        <a href="javascript:;">
+                            <i class="icon-home"></i>
+                            <span class="title">品牌经理&督导D1</span>
+                            <span class="selected"></span>
+                            <span class="arrow "></span>
+                        </a>
+                        <ul class="sub-menu">
+                            <li>
+                                <a href="@Url.Action("QueryStat", "Questionaire", new { qtype =12})">
+                                    <i class="icon-bar-chart"></i>
+                                    问卷统计
+                                </a>
+                            </li>
+                            <li class="active">
+                                <a href="@Url.Action("QueryDetail", "Questionaire", new { qtype =12})">
+                                    <i class="icon-bulb"></i>
+                                    问卷详情
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="start  ">
+                        <a href="javascript:;">
+                            <i class="icon-home"></i>
+                            <span class="title">培训&陈列D1</span>
+                            <span class="selected"></span>
+                            <span class="arrow "></span>
+                        </a>
+                        <ul class="sub-menu">
+                            <li>
+                                <a href="@Url.Action("QueryStat", "Questionaire", new { qtype =13})">
+                                    <i class="icon-bar-chart"></i>
+                                    问卷统计
+                                </a>
+                            </li>
+                            <li class="active">
+                                <a href="@Url.Action("QueryDetail", "Questionaire", new { qtype =13})">
+                                    <i class="icon-bulb"></i>
+                                    问卷详情
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="start  ">
+                        <a href="javascript:;">
+                            <i class="icon-home"></i>
+                            <span class="title">商品D1</span>
+                            <span class="selected"></span>
+                            <span class="arrow "></span>
+                        </a>
+                        <ul class="sub-menu">
+                            <li>
+                                <a href="@Url.Action("QueryStat", "Questionaire", new { qtype =14})">
+                                    <i class="icon-bar-chart"></i>
+                                    问卷统计
+                                </a>
+                            </li>
+                            <li class="active">
+                                <a href="@Url.Action("QueryDetail", "Questionaire", new { qtype =14})">
+                                    <i class="icon-bulb"></i>
+                                    问卷详情
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="start  ">
+                        <a href="javascript:;">
+                            <i class="icon-home"></i>
+                            <span class="title">店长D2</span>
+                            <span class="selected"></span>
+                            <span class="arrow "></span>
+                        </a>
+                        <ul class="sub-menu">
+                            <li>
+                                <a href="@Url.Action("QueryStat", "Questionaire", new { qtype =21})">
+                                    <i class="icon-bar-chart"></i>
+                                    问卷统计
+                                </a>
+                            </li>
+                            <li class="active">
+                                <a href="@Url.Action("QueryDetail", "Questionaire", new { qtype =21})">
+                                    <i class="icon-bulb"></i>
+                                    问卷详情
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="start  ">
+                        <a href="javascript:;">
+                            <i class="icon-home"></i>
+                            <span class="title">培训经理&督导D2</span>
+                            <span class="selected"></span>
+                            <span class="arrow"></span>
+                        </a>
+                        <ul class="sub-menu">
+                            <li>
+                                <a href="@Url.Action("QueryStat", "Questionaire", new { qtype =22})">
+                                    <i class="icon-bar-chart"></i>
+                                    问卷统计
+                                </a>
+                            </li>
+                            <li class="active">
+                                <a href="@Url.Action("QueryDetail", "Questionaire", new { qtype =22})">
+                                    <i class="icon-bulb"></i>
+                                    问卷详情
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="start">
+                        <a href="javascript:;">
+                            <i class="icon-home"></i>
+                            <span class="title">陈列&培训D2</span>
+                            <span class="selected"></span>
+                            <span class="arrow"></span>
+                        </a>
+                        <ul class="sub-menu">
+                            <li>
+                                <a href="@Url.Action("QueryStat", "Questionaire", new { qtype =23})">
+                                    <i class="icon-bar-chart"></i>
+                                    问卷统计
+                                </a>
+                            </li>
+                            <li class="active">
+                                <a href="@Url.Action("QueryDetail", "Questionaire", new { qtype =23})">
+                                    <i class="icon-bulb"></i>
+                                    问卷详情
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="start">
+                        <a href="javascript:;">
+                            <i class="icon-home"></i>
+                            <span class="title">陈列D2</span>
+                            <span class="selected"></span>
+                            <span class="arrow"></span>
+                        </a>
+                        <ul class="sub-menu">
+                            <li>
+                                <a href="@Url.Action("QueryStat", "Questionaire", new { qtype =24})">
+                                    <i class="icon-bar-chart"></i>
+                                    问卷统计
+                                </a>
+                            </li>
+                            <li class="active">
+                                <a href="@Url.Action("QueryDetail", "Questionaire", new { qtype =24})">
+                                    <i class="icon-bulb"></i>
+                                    问卷详情
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+</div>
+        </div>
+        <div class="page-content-wrapper">
+            <div class="page-content">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+    <div class="page-footer">
+        <div class="page-footer-inner">
+            2016 &copy; Thyiad
+        </div>
+        <div class="page-footer-tools">
+            <span class="go-top">
+                <i class="fa fa-angle-up"></i>
+            </span>
+        </div>
+    </div>
+    <script src="~/Content/admin/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js"></script>
+    @Scripts.Render("~/bundles/metronicJS")
+    @RenderSection("scripts", false)
+</body>
+</html>

@@ -14,13 +14,23 @@
             border: 1px solid #0894ec;
             text-align: center;
         }
-        #imgContainer{
+
+        #imgContainer {
             min-height: 150px;
         }
+
         #sendWord {
             margin-top: 15px;
             background-color: #efeff4;
-            /*height:100px;*/
+            height: 88px;
+        }
+
+        #signName {
+            width: 100%;
+            height: 35px;
+            border: 1px solid #0894ec;
+            text-align: center;
+             background-color: #efeff4;
         }
 
         #iconPic {
@@ -48,6 +58,7 @@
                 <span id="iconPic" class="icon icon-picture"></span>
             </div>
             <textarea id="sendWord" style="width:100%" placeholder="请输入寄语"></textarea>
+            <input id="signName" type="text" value="" placeholder="请输入签名" />
         </div>
         <div class="content-block">
             <p><a id="btnSend" href="#" class="button button-big" disabled>确&nbsp;&nbsp;认</a></p>
@@ -58,10 +69,13 @@
 @section scripts{
     <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
     <script>
+        $.showPreloader("加载中...");
         $.init();
 
         wx.error(function (res) {
             console.log(res);
+            $.hidePreloader();
+            $.alert("微信配置失败");
         });
 
         wx.config({
@@ -74,6 +88,7 @@
         });
         var imgLocalId = null;
         wx.ready(function () {
+            $.hidePreloader();
             $("#imgContainer").on('tap',function(){
                 wx.chooseImage({
                     count: 1, // 默认9
@@ -97,8 +112,9 @@
 
         function resetBtnStatus(){
             var img = $('#imgSelect').css('display') !== 'none';
-            var txt = $('#sendWord').val();
-            if (img && txt) {
+            var txt = $('#sendWord').val().trim();
+            var sign = $("#signName").val().trim();
+            if (img && txt && sign) {
                 $('#btnSend').removeAttr('disabled');
             }else{
                 $('#btnSend').attr('disabled','true');
@@ -108,30 +124,56 @@
         $("#sendWord").on('keyup',function(){
             resetBtnStatus();
         })
+        $("#signName").on('keyup',function(){
+            resetBtnStatus();
+        })
+        var inclick=false;
         $('#btnSend').on('tap', function () {
-            //window.location.href = "/SC/GetImg";
-            //return;
-            //$.get('/SC/GetImg','',function(data){
-            //    window.location.href = data;
-            //});
-            // window.location.href = "/Content/test.jpg";
-            // return;
             // html2Canvas 在微信内置浏览器不行，操蛋了
             // QQ浏览器X5内核貌似是基于android 4.2的webkit, 版本号webkit 534, 参考网址：https://www.qianduan.net/qqliu-lan-qi-x5nei-he-wen-ti-hui-zong/
             // 2016-03-02
+            if(inclick) return;
+            inclick = true;
             var dis = this.getAttribute('disabled');
             if (dis !== null) {
+                inclick = false;
                 return;
             }
 
+            $.showPreloader('生成图片中...');
+            inclick = false;
             // 上传到微信服务器
             wx.uploadImage({
                 localId: imgLocalId, // 需要上传的图片的本地ID，由chooseImage接口获得
-                isShowProgressTips: 1, // 默认为1，显示进度提示
+                isShowProgressTips: 0, // 默认为1，显示进度提示
                 success: function (res) {
                     var serverId = res.serverId; // 返回图片的服务器端ID
-
-                    // 将serverID传到后台，后台下载并生成图片，再发回前台
+                    $.ajax({
+                        url:'@Url.Action("GenerateChartlet")',
+                        dataType:'json',
+                        data:{
+                            serverID:serverId,
+                            msg:$('#sendWord').val().trim(),
+                            signName:$("#signName").val().trim(),
+                        },
+                        success:function(data){
+                            if(data.ok){
+                                $.hidePreloader();
+                                location.href="/SC/PreDownloadChartlet?id="+data.id;
+                            }else{
+                                $.hidePreloader();
+                                $.alert("生成图片失败");
+                            }
+                        },
+                        error:function(){
+                            $.hidePreloader();
+                            $.alert("生成图片失败");
+                        }
+                    });
+                },
+                fail:function(){
+                    $.hidePreloader();
+                    $.alert("上传图片失败");
                 }
             });
 
