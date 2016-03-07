@@ -416,7 +416,7 @@ dataDay2 = [
     {
         questionType: "23",
         pageID: "d2PXCL",
-        title: "培训&陈列D2",
+        title: "陈列兼培训D2",
         questions: [
             {
                 name: "培训:人才储备-培养",

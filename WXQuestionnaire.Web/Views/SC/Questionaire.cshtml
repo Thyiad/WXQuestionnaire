@@ -4,13 +4,17 @@
 
 @section styles{
     <style>
-        #optDay {
-        }
+        /*.page{
+            background-image:url('/img/bg-questionaire2.jpg');
+            background-repeat:no-repeat;
+            background-attachment:fixed;
+            background-position:center;
+        }*/
 
-            #optDay .button-big {
-                height: 4.8em;
-                line-height: 4.6em;
-            }
+        #optDay .button-big {
+            height: 4.8em;
+            line-height: 4.6em;
+        }
     </style>
 }
 
@@ -44,7 +48,7 @@
                         <div class="item-inner">
                             <div class="item-title label">客户类别</div>
                             <div class="item-input">
-                                <input  type="text" placeholder="Your customer type" id="customerType">
+                                <input type="text" placeholder="Your customer type" id="customerType">
                             </div>
                         </div>
                     </div>
@@ -138,7 +142,7 @@
                         var uname = $("#uname").val();
                         var customerType = $("#customerType").val();
                         var position = $("#position").val();
-                        if (!uname || !customerType ||!position) {
+                        if (!uname || !customerType || !position) {
                             $.toast("请输入您的信息");
                             return;
                         }
@@ -159,7 +163,7 @@
                             return;
                         }
                         var $this = $(e.target);
-                        var $curPage = $("#"+$this.attr("data-pageid"));
+                        var $curPage = $("#" + $this.attr("data-pageid"));
                         var curPageIdx = parseInt($this.attr("data-pageindex"));
                         var qtype = $this.attr("data-qtype");   // 问卷类型
                         var qData = {}; // 问卷数据
@@ -176,10 +180,10 @@
                             data: {
                                 qtype: qtype,
                                 qdata: JSON.stringify(qData),
-                                user:JSON.stringify(userInfo),
+                                user: JSON.stringify(userInfo),
                             },
-                            dataType:"json",
-                            async:true,
+                            dataType: "json",
+                            async: true,
                             success: function (data) {
                                 if (!data.ok) {
                                     $.alert(data.msg);
@@ -190,7 +194,7 @@
                                 if (curPageIdx !== (app.pages.length - 1)) {
                                     var url = "#" + app.pages[curPageIdx + 1].pageID;
                                     //$this.attr("href", url);          // ajax异步，设置href路由不会自动跳转
-                                    $.router.load(url,false);           // 所以改为手动控制
+                                    $.router.load(url, false);           // 所以改为手动控制
                                     $.hidePreloader();
                                     return;
                                 }

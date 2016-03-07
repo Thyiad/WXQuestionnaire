@@ -134,6 +134,7 @@ namespace WXQuestionnaire.Web.Controllers
                     Position = position,
                     QuestionaireType = qtype,
                     QuestionaireDetail = qdata,
+                    QTime= DateTime.Now,
                 };
 
                 if (!_questionaireService.AddQuestionaire(questionaire))

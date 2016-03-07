@@ -1,4 +1,5 @@
 packages
+WXQuestionnaire.v12.suo
 WXQuestionnaire.BLL/bin
 WXQuestionnaire.BLL/obj
 WXQuestionnaire.DAL/bin
@@ -7,6 +8,9 @@ WXQuestionnaire.Model/bin
 WXQuestionnaire.Model/obj
 WXQuestionnaire.Web/bin
 WXQuestionnaire.Web/obj
+WXQuestionnaire.Web/Log
+WXQuestionnaire.Web/data/Chartlets
+WXQuestionnaire.Web/data/WXDownload
 WXQuestionnaire.Tool/bin
 WXQuestionnaire.Tool/obj
 WXQuestionnaire.v12.suo

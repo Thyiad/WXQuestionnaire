@@ -1,6 +1,6 @@
-﻿
+﻿@model List<WXQuestionnaire.Model.Questionaire.QuestionaireVM>
 @{
-    ViewBag.Title = "QueryDetail";
+    ViewBag.Title = "问卷明细-列表";
     Layout = "~/Areas/Admin/Views/Shared/adminLayout.cshtml";
 }
 
@@ -8,7 +8,7 @@
     <div class="portlet box green">
         <div class="portlet-title">
             <div class="caption">
-                <i class="fa fa-gift"></i>@ViewBag.QuestionaireType.ToString() 问卷详情
+                <i class="fa fa-gift"></i>@ViewBag.QuestionaireType.ToString() 问卷列表
             </div>
             <div class="tools">
             </div>
@@ -22,39 +22,34 @@
                                 #
                             </th>
                             <th>
-                                First Name
+                                姓名
                             </th>
                             <th>
-                                Last Name
+                                顾客类型
                             </th>
                             <th>
-                                Username
+                                职位
                             </th>
                             <th>
-                                Status
+                                创建时间
                             </th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>
-                                1
-                            </td>
-                            <td>
-                                Mark
-                            </td>
-                            <td>
-                                Otto
-                            </td>
-                            <td>
-                                makr124
-                            </td>
-                            <td>
-                                <span class="label label-sm label-success">
-                                    Approved
-                                </span>
-                            </td>
-                        </tr>
+                        @{
+                            int i = 1;
+                            foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@Html.ActionLink(i.ToString(), "QueryDetailByQID", new { qid = item.ID })</td>
+                                    <td>@item.Name</td>
+                                    <td>@item.CustomerType</td>
+                                    <td>@item.Position</td>
+                                    <td>@item.QTime</td>
+                                </tr>
+                                i++;
+                            }
+                        }
                     </tbody>
                 </table>
             </div>

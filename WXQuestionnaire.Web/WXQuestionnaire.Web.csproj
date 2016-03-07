@@ -53,6 +53,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Newtonsoft.Json.8.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="System.Data.SqlServerCe, Version=4.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.SqlServer.Compact.4.0.8876.1\lib\net40\System.Data.SqlServerCe.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -244,8 +248,10 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\sm.css" />
-    <Content Include="Data\WXDownload\test.jpg" />
     <Content Include="Data\WXTemplates\WXReply_Text.xml" />
+    <Content Include="img\bg-questionaire.jpg" />
+    <Content Include="img\bg-questionaire1.jpg" />
+    <Content Include="img\bg-questionaire2.jpg" />
     <Content Include="Scripts\html2canvas.js" />
     <Content Include="Scripts\html2canvas.min.js" />
     <Content Include="Scripts\questionaire.js" />
@@ -265,9 +271,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\bootstrap.min.css.map" />
     <Content Include="Content\bootstrap.css.map" />
-    <Content Include="img\bg-white-lock.png" />
-    <Content Include="img\syncfusion-icons-white.png" />
-    <Content Include="img\syncfusion-icons.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="fonts\fontawesome-webfont.woff2" />
@@ -286,6 +289,8 @@
     <Content Include="Areas\Admin\Views\Shared\adminLayout.cshtml" />
     <Content Include="Areas\Admin\Views\Questionaire\QueryStat.cshtml" />
     <Content Include="Areas\Admin\Views\Questionaire\QueryDetail.cshtml" />
+    <Content Include="Areas\Admin\Views\Questionaire\QueryDetailByQID.cshtml" />
+    <None Include="Properties\PublishProfiles\publish local.pubxml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\jqBootstrapValidation.js" />
     <Content Include="Scripts\jquery-2.2.0.js" />
@@ -330,6 +335,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Data\Chartlets\" />
+    <Folder Include="Data\WXDownload\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WXQuestionnaire.BLL\WXQuestionnaire.BLL.csproj">
