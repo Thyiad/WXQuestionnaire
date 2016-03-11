@@ -20,8 +20,26 @@ namespace WXQuestionnaire.Tool
         /// </summary>
         public class WXConstant
         {
-            public const string APP_ID = "wx74f022031760391f";
-            public const string APP_SECRET = "933b53bfa644568c20bfc12c337cea4b";
+            private static string _appid = "";
+            public static string APP_ID
+            {
+                get
+                {
+                    if (string.IsNullOrEmpty(_appid))
+                        _appid = System.Web.Configuration.WebConfigurationManager.AppSettings["AppID"].ToString();
+                    return _appid;
+                }
+            }
+            private static string _appsecret = "";
+            public static string APP_SECRET
+            {
+                get
+                {
+                    if (string.IsNullOrEmpty(_appsecret))
+                        _appsecret = System.Web.Configuration.WebConfigurationManager.AppSettings["AppSecret"].ToString();
+                    return _appsecret;
+                }
+            }
 
             public const string KEY_ToUserName = "ToUserName";
             public const string KEY_FromUserName = "FromUserName";
@@ -75,6 +93,7 @@ namespace WXQuestionnaire.Tool
                     };
                 }
 
+                LogHelper.Debug("token is: " + _token.Token);
                 return _token.Token;
             }
             catch (Exception ex)
@@ -148,7 +167,8 @@ namespace WXQuestionnaire.Tool
             [JsonProperty("jsApiList")]
             public string JsApiList
             {
-                get{
+                get
+                {
                     return "\"chooseImage\", \"previewImage\", \"uploadImage\", \"downloadImage\"";
                 }
             }
@@ -161,7 +181,7 @@ namespace WXQuestionnaire.Tool
 
             // 获取signature
             string ticket = GetJsApiTicket();
-            string url =  "http://"+HttpContext.Current.Request.Url.Host+HttpContext.Current.Request.Url.AbsolutePath;
+            string url = "http://" + HttpContext.Current.Request.Url.Host + HttpContext.Current.Request.Url.AbsolutePath;
             // string url = HttpContext.Current.Request.Url.AbsoluteUri;
             if (url.IndexOf("#") > 0)
                 url = url.Substring(0, url.IndexOf("#"));
@@ -205,21 +225,32 @@ namespace WXQuestionnaire.Tool
         /// <param name="serverID">文件ID</param>
         /// <param name="ext">扩展名</param>
         /// <returns></returns>
-        public static string DownloadFile(string serverID,string ext) {
+        public static string DownloadFile(string serverID, string ext)
+        {
             try
             {
+                LogHelper.Debug("begin download, serverID is: "+serverID);
                 string accessToken = GetAccessToken();
-                string url = string.Format("http://file.api.weixin.qq.com/cgi-bin/media/get?access_token={0}&media_id={1}", accessToken, serverID);
+                string url = string.Format("https://api.weixin.qq.com/cgi-bin/media/get?access_token={0}&media_id={1}", accessToken, serverID);
                 HttpWebRequest myRequest = (HttpWebRequest)HttpWebRequest.Create(url);
                 HttpWebResponse myResponse = (HttpWebResponse)myRequest.GetResponse();
-                var stream = myResponse.GetResponseStream();
-
+               
+                string sss = myResponse.ContentType;
+                var ssss = myResponse.ContentEncoding;
                 string virtualPath = "/Data/WXDownload/" + serverID + ext;
                 string savePath = HttpContext.Current.Server.MapPath(virtualPath);
+
+                var stream = myResponse.GetResponseStream();
+
+                if (myResponse.ContentType == "text/plain")
+                    LogHelper.Debug("contentType is text/plain");
+
                 StreamWriter sw = new StreamWriter(savePath);
                 stream.CopyTo(sw.BaseStream);
                 sw.Flush();
                 sw.Close();
+
+
 
                 return virtualPath;
             }

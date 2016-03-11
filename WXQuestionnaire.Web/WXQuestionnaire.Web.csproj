@@ -250,7 +250,6 @@
     <Content Include="Content\sm.css" />
     <Content Include="Data\WXTemplates\WXReply_Text.xml" />
     <Content Include="img\bg-questionaire.jpg" />
-    <Content Include="img\bg-questionaire.png" />
     <Content Include="Scripts\html2canvas.js" />
     <Content Include="Scripts\html2canvas.min.js" />
     <Content Include="Scripts\questionaire.js" />
@@ -294,7 +293,9 @@
     <Content Include="Scripts\jqBootstrapValidation.js" />
     <Content Include="Scripts\jquery-2.2.0.js" />
     <Content Include="Scripts\jquery-2.2.0.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />

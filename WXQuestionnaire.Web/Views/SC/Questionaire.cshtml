@@ -4,33 +4,54 @@
 
 @section styles{
     <style>
-        .page{
-            background-image:url('/img/bg-questionaire.png');
-            background-repeat:no-repeat;
-            background-attachment:fixed;
-            background-position:center;
+        #optDay {
+            /*background-image: url('/img/bg-questionaire.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;*/
         }
-
-        #optDay .button-big {
-            height: 4.8em;
-            line-height: 4.6em;
+        #pageGroup{
+            text-align:center;
         }
+        .page {
+            background:transparent;
+        }
+            #optDay .button-big {
+               line-height: 1.5em;
+                padding: 20px 0px;
+                height: 5.2em;
+                color: black;
+                border-color: black;
+                background-color: white;
+                opacity: 0.5;
+            }
+            #beginQuestion{
+                    background-color: white;
+                    opacity: 0.5;
+                    color: black;
+                    border-color: black;
+            }
     </style>
 }
 
+<img id="bgimg" src="~/img/bg-questionaire.jpg" alt="" height="100%" width="auto" style="margin-left:auto;margin-right:auto" />
 <div id="optDay" class="page page-current">
     <div class="content-block">
-        <p style="padding-top:100px"><a id="day1" class="button button-big">第1天(Day1)</a></p>
-        <p style="padding-top:50px"><a id="day2" class="button button-big"> 第2天(Day2)</a></p>
+        <p style="padding-top:50px">
+            <a id="day1" class="button button-big">
+                第1天<br />(Day1)
+            </a>
+        </p>
+        <p style="padding-top:20px"><a id="day2" class="button button-big"> 第2天<br/>(Day2)</a></p>
     </div>
 </div>
 <div id="userInfo" class="page">
-    <header class="bar bar-nav">
+    <header class="bar bar-nav" style="opacity:0.5;">
         <h1 class='title'>您的信息</h1>
     </header>
     <div class="content">
         <div class="list-block">
-            <ul>
+            <ul style="opacity: 0.5;">
                 <li>
                     <div class="item-content">
                         <div class="item-media"><i class="icon icon-form-name"></i></div>
@@ -67,7 +88,7 @@
             </ul>
         </div>
         <div class="content-block">
-            <a v-on:click="beginQuestion" class="button button-big">
+            <a id="beginQuestion" v-on:click="beginQuestion" class="button button-big">
                 开始问卷
             </a>
         </div>
@@ -151,6 +172,8 @@
                         userInfo.position = position;
 
                         console.log('begin question');
+                        $("#bgimg").hide();
+                        $("#pageGroup").css("text-align", "inherit");
                         var $this = $(e.target);
                         $this.attr('href', "#" + this.pages[0].pageID);
                     },
