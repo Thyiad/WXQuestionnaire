@@ -8,25 +8,64 @@ var dataDay1 = [];
 var dataDay2 = [];
 var app = null;
 
+var dayIdentity = {
+    day1: [
+        {
+            id: "d1DZ",
+            text: "店长",
+        },
+        {
+            id: "d1PPJLDD",
+            text: "品牌经理/督导",
+        },
+        {
+            id: "d1CLPX",
+            text: "陈列/培训",
+        },
+        {
+            id: "d1SP",
+            text: "商品",
+        },
+    ],
+    day2: [
+        {
+            id: "d2DZ",
+            text: "店长",
+        },
+        {
+            id: "d2PPJLDD",
+            text: "品牌经理/督导",
+        },
+        {
+            id: "d2CLPX",
+            text: "陈列/培训",
+        },
+        {
+            id: "d2CL",
+            text: "陈列",
+        },
+    ]
+};
+
 var msgConst = {
-    title1: "课程实用",
-    text1: "课程实用，提供了有效的技巧和方法",
-    title2: "培训内容",
-    text2: "培训内容丰富并且具有针对性",
-    title3: "培训方式",
-    text3: "培训方式有趣味并且具有启发性",
-    title4: "讲师能力",
-    text4: "讲师拥有与课程主题相关的专业能力",
-    title5: "讲师授课",
+    title1: "课程满意吗？",
+    text1: "课程的实用性，提供有效技巧和方法", // "课程实用，提供了有效的技巧和方法",
+    title2: "培训内容满意吗？",
+    text2: "培训内容的丰富性、针对性",// "培训内容丰富并且具有针对性",
+    title3: "培训方式满意吗？",
+    text3: "培训方式的趣味性、启发性",// "培训方式有趣味并且具有启发性",
+    title4: "讲师能力满意吗？",
+    text4: "讲师与课程主题相关之专业能力", //"讲师拥有与课程主题相关的专业能力",
+    title5: "讲师授课满意吗？",
     text5: "讲师授课语速适中、表达清晰、易于理解",
-    title6: "讲师互动",
-    text6: "讲师授能调动学院积极参与互动",
-    title01: "培训时间",
-    text01: "培训时间安排合理",
-    title02: "现场布置",
-    text02: "现场布置安排好",
-    title03: "活动设置",
-    text03: "活动设置及组织效果好",
+    title6: "讲师互动满意吗？",
+    text6: "讲师调动学院积极参与互动", //"讲师能调动学员积极参与互动",
+    title01: "培训时间满意吗？",
+    text01: "培训项目的时间的安排", //"培训时间安排合理",
+    title02: "现场布置满意吗？",
+    text02: "现场布置安排", //"现场的布置安排恰当",
+    title03: "活动设置满意吗？",
+    text03: "活动设置及组织效果",//"活动设置及组织效果好",
 };
 
 var dataCommon = {
@@ -243,8 +282,8 @@ var dataCommon = {
 
 dataDay1 = [
     {
-        questionType:"11",
-        pageID: "d1DZ",
+        questionType: "11",
+        pageID: dayIdentity.day1[0].id,
         title: "店长D1",
         questions: [
             {
@@ -279,7 +318,7 @@ dataDay1 = [
     },
     {
         questionType: "12",
-        pageID: "d1PPJLDD",
+        pageID: dayIdentity.day1[1].id,
         title: "品牌经理&督导D1",
         questions: [
             {
@@ -306,7 +345,7 @@ dataDay1 = [
     },
     {
         questionType: "13",
-        pageID: "d1PXCL",
+        pageID: dayIdentity.day1[2].id,
         title: "培训&陈列D1",
         questions: [
             {
@@ -331,7 +370,7 @@ dataDay1 = [
     },
     {
         questionType: "14",
-        pageID: "d1SP",
+        pageID: dayIdentity.day1[3].id,
         title: "商品D1",
         questions: [
             {
@@ -361,7 +400,7 @@ dataDay1 = [
 dataDay2 = [
     {
         questionType: "21",
-        pageID: "d2DZ",
+        pageID: dayIdentity.day2[0].id,
         title: "店长D2",
         questions: [
             {
@@ -388,7 +427,7 @@ dataDay2 = [
     },
     {
         questionType: "22",
-        pageID: "d2PPJLDD",
+        pageID: dayIdentity.day2[1].id,
         title: "品牌经理&督导D2",
         questions: [
             {
@@ -415,7 +454,7 @@ dataDay2 = [
     },
     {
         questionType: "23",
-        pageID: "d2PXCL",
+        pageID: dayIdentity.day2[2].id,
         title: "陈列兼培训D2",
         questions: [
             {
@@ -443,7 +482,7 @@ dataDay2 = [
     },
     {
         questionType: "24",
-        pageID: "d2CL",
+        pageID: dayIdentity.day2[3].id,
         title: "陈列D2",
         questions: [
             {
@@ -468,7 +507,7 @@ dataDay2 = [
 $("#customerType").picker({
     toolbarTemplate: '<header class="bar bar-nav">\
                 <button class="button button-link pull-right close-picker">确定</button>\
-                <h1 class="title">请选择职位</h1>\
+                <h1 class="title">请选择客户类别</h1>\
                 </header>',
     cols: [
       {
@@ -477,15 +516,15 @@ $("#customerType").picker({
       }
     ]
 });
-$("#position").picker({
-    toolbarTemplate: '<header class="bar bar-nav">\
-              <button class="button button-link pull-right close-picker">确定</button>\
-              <h1 class="title">请选择职位</h1>\
-              </header>',
-    cols: [
-      {
-          textAlign: 'center',
-          values: ['店长', '品牌经理/督导', '陈列/培训']
-      }
-    ]
-});
+//$("#position").picker({
+//    toolbarTemplate: '<header class="bar bar-nav">\
+//              <button class="button button-link pull-right close-picker">确定</button>\
+//              <h1 class="title">请选择职位</h1>\
+//              </header>',
+//    cols: [
+//      {
+//          textAlign: 'center',
+//          values: ['店长', '品牌经理/督导', '陈列/培训','商品']
+//      }
+//    ]
+//});

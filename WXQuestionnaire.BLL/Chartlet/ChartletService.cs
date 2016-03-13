@@ -68,13 +68,16 @@ namespace WXQuestionnaire.BLL.Chartlet
                 string srcImgPath = HttpContext.Current.Server.MapPath(chartlet.OriginalImgPath);
 
                 Bitmap srcBitmap = new Bitmap(srcImgPath);
-                Font f= new Font(FontFamily.GenericSansSerif, 9);
+                var fonts = new System.Drawing.Text.PrivateFontCollection();
+                fonts.AddFontFile(HttpContext.Current.Server.MapPath("/fonts/新蒂黑板报.ttf"));
+                Font f = new Font(fonts.Families[0],9);
                 Brush b = Brushes.Black;
+                int paddingInner = 15; 
                 int spaceImg = 20;
                 int spaceMsg = 5;
                 int spaceName = 50;
                 int spaceNameRight=15;
-                int spaceBottom = 10;
+                int spaceBottom = 0;
 
                 // 目标图的宽=原图的宽
                 // 目标图的高 = 原图的高+间隙+所有文字的高+间隙+签名的高
@@ -96,31 +99,49 @@ namespace WXQuestionnaire.BLL.Chartlet
                     (msgList.Count - 1) * spaceMsg + spaceName +normalTextHeight+ spaceBottom;
 
                 // 开始绘图
-                Bitmap dstBitmap = new Bitmap(dstWith, dstHeight);
+                Bitmap dstBitmap = new Bitmap(dstWith + paddingInner * 2, dstHeight + paddingInner * 2);
                 using (Graphics g = Graphics.FromImage(dstBitmap))
                 {
-                    int y = 0;
-                    g.FillRectangle(Brushes.White, 0, 0, dstWith, dstHeight);
-                    Rectangle r = new Rectangle(new Point(0, y), new Size(dstWith,rateHeight));
+                    int x = paddingInner;
+                    int y = paddingInner;
+                    g.FillRectangle(Brushes.White, 0, 0, dstBitmap.Width, dstBitmap.Height);
+                    Rectangle r = new Rectangle(new Point(x, y), new Size(dstWith, rateHeight));
                     g.DrawImage(srcBitmap, r);
-                    y = rateHeight + spaceImg;
+                    y = y+rateHeight + spaceImg;
                     for (int i = 0; i < msgList.Count; i++)
                     {
                         Size currentSize= StrUtil.MeasureString(msgList[i],f);
-                        g.DrawString(msgList[i], f, b, new PointF((dstWith - currentSize.Width) / 2, y));
+                        g.DrawString(msgList[i], f, b, new PointF((dstWith - currentSize.Width) / 2 +x, y));
 
                         y += (currentSize.Height + ((i == (msgList.Count - 1)) ? spaceName : spaceMsg));
                     }
                     var nameSize = StrUtil.MeasureString("by  "+chartlet.SignName,f);
-                    g.DrawString("by  "+chartlet.SignName, f, b, new PointF(dstWith - nameSize.Width - spaceNameRight, y));
+                    g.DrawString("by  "+chartlet.SignName, f, b, new PointF(dstWith - nameSize.Width - spaceNameRight +paddingInner, y));
+                }
+
+                // 为图片加相框
+                int paddingOutterTop = 60;
+                int paddingOutterLeft = 60;
+                int paddingOutterRight = 20;
+                int paddingOutterBottom = 20;
+                Bitmap frameBitmap = new Bitmap(dstBitmap.Width+paddingOutterLeft+paddingOutterRight,dstBitmap.Height+paddingOutterTop+paddingOutterBottom);
+                using (Graphics g = Graphics.FromImage(frameBitmap))
+                {
+                    string frameBgImgPath = HttpContext.Current.Server.MapPath("/img/bg-chartlet.jpg");
+                    Bitmap frameBgImg = new Bitmap(frameBgImgPath);
+                    g.DrawImage(frameBgImg, 0, 0);
+                    Rectangle r = new Rectangle(new Point(paddingOutterLeft, paddingOutterTop), new Size(dstBitmap.Width, dstBitmap.Height));
+                    g.DrawImage(dstBitmap, r);
+                    frameBgImg.Dispose();
                 }
 
                 string dstVirtualPath = "/Data/Chartlets/" + chartlet.ServerIDWX + ".jpg";
                 string dstPath = HttpContext.Current.Server.MapPath(dstVirtualPath);
-                dstBitmap.Save(dstPath);
+                frameBitmap.Save(dstPath);
                 chartlet.BuildImgPath = dstVirtualPath;
                 srcBitmap.Dispose();
                 dstBitmap.Dispose();
+                frameBitmap.Dispose();
                 return true;
             }
             catch (Exception ex)

@@ -114,13 +114,15 @@
             var img = $('#imgSelect').css('display') !== 'none';
             var txt = $('#sendWord').val().trim();
             var sign = $("#signName").val().trim();
+            // alert('img:'+img+' txt:'+txt+' sign:'+sign);
             if (img && txt && sign) {
                 $('#btnSend').removeAttr('disabled');
             }else{
                 $('#btnSend').attr('disabled','true');
             }
         }
-
+        
+        // 奇怪，微信中按back键回退到该页面，keyup事件不会被绑定
         $("#sendWord").on('keyup',function(){
             resetBtnStatus();
         })

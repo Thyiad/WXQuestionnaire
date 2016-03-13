@@ -80,5 +80,7 @@ namespace WXQuestionnaire.Model.Questionaire
         public int Q01Num { get; set; }
         public int Q02Num { get; set; }
         public int Q03Num { get; set; }
+
+        public int QuestionaireCount { get; set; }
     }
 }

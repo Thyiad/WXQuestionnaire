@@ -1,48 +1,44 @@
 ﻿@{
-    ViewBag.Title = "Questionaire";
+    ViewBag.Title = "听我的";
 }
 
 @section styles{
     <style>
-        #optDay {
-            /*background-image: url('/img/bg-questionaire.jpg');
+        #optDay,#optIdentity,#userInfo {
+            background-image: url('/img/bg-questionaire.jpg');
             background-repeat: no-repeat;
             background-attachment: fixed;
-            background-position: center;*/
+            background-position: top left;
         }
-        #pageGroup{
-            text-align:center;
+        #optDay .button, #optIdentity .button,#userInfo .button{
+            color: black;
+            border-color: black;
+            background-color: white;
+            opacity: 0.5;
         }
-        .page {
-            background:transparent;
+
+        #optDay .button-big {
+            line-height: 1.5em;
+            padding: 20px 0;
+            height: 5.2em;
         }
-            #optDay .button-big {
-               line-height: 1.5em;
-                padding: 20px 0px;
-                height: 5.2em;
-                color: black;
-                border-color: black;
-                background-color: white;
-                opacity: 0.5;
-            }
-            #beginQuestion{
-                    background-color: white;
-                    opacity: 0.5;
-                    color: black;
-                    border-color: black;
-            }
     </style>
 }
-
-<img id="bgimg" src="~/img/bg-questionaire.jpg" alt="" height="100%" width="auto" style="margin-left:auto;margin-right:auto" />
 <div id="optDay" class="page page-current">
     <div class="content-block">
         <p style="padding-top:50px">
-            <a id="day1" class="button button-big">
-                第1天<br />(Day1)
-            </a>
+            <a class="button button-big" data-day="day1" v-on:click="optDay">第1天<br />(Day1)</a>
         </p>
-        <p style="padding-top:20px"><a id="day2" class="button button-big"> 第2天<br/>(Day2)</a></p>
+        <p style="padding-top:20px">
+            <a class="button button-big" data-day="day2" v-on:click="optDay"> 第2天<br />(Day2)</a>
+        </p>
+    </div>
+</div>
+<div id="optIdentity" class="page">
+    <div class="content-block">
+        <p v-bind:style="'padding-top:'+$index==0?'50px':'20px'" v-for="identity in identities">
+            <a class="button button-big" data-id="{{identity.id}}" v-on:click="optIdentity">{{identity.text}}</a>
+        </p>
     </div>
 </div>
 <div id="userInfo" class="page">
@@ -74,7 +70,7 @@
                         </div>
                     </div>
                 </li>
-                <li>
+                @*<li>
                     <div class="item-content">
                         <div class="item-media"><i class="icon icon-form-name"></i></div>
                         <div class="item-inner">
@@ -84,7 +80,7 @@
                             </div>
                         </div>
                     </div>
-                </li>
+                </li>*@
             </ul>
         </div>
         <div class="content-block">
@@ -95,167 +91,203 @@
     </div>
 </div>
 
-<div id="{{page.pageID}}" data-qtype="{{page.questionType}}" v-for="(pageIndex, page) in pages" track-by='$index' class="page">
+<div id="questionaire" class="page">
     <header class="bar bar-nav">
-        <h1 class='title'>{{page.title}}</h1>
+        <h1 class='title'>{{questionaireData.title}}</h1>
     </header>
     <div class="content">
-        <template v-for="question in page.questions">
+        <template v-for="question in questionaireData.questions">
             <div class="content-block-title">{{question.name}}</div>
-            <div class="list-block media-list">
-                <ul>
-                    <li v-for="subQuestion in question.subQuestions">
-                        <label class="label-checkbox item-content">
-                            <input class="ck" data-qid="{{subQuestion.id}}" type="checkbox" name="checkbox">
-                            <div class="item-media"><i class="icon icon-form-checkbox"></i></div>
-                            <div class="item-inner">
-                                <div class="item-title-row">
-                                    <div class="item-title">
-                                        {{subQuestion.title}}
-                                    </div>
-                                </div>
-                                <div class="item-text">{{subQuestion.text}}</div>
-                            </div>
-                        </label>
-                    </li>
-                </ul>
+            <div class="card" v-for="subQuestion in question.subQuestions">
+                <div class="card-header">{{subQuestion.text}}</div>
+                <div class="card-content">
+                    <div class="card-content-inner">
+                        <div class="list-block media-list">
+                            <ul>
+                                <li>
+                                    <label class="label-checkbox item-content">
+                                        <input class="ck-yes" type="radio" name="{{subQuestion.id}}" data-qid="{{subQuestion.id}}">
+                                        <div class="item-media"><i class="icon icon-form-checkbox"></i></div>
+                                        <div class="item-inner">
+                                            <div class="item-title-row">
+                                                <div class="item-title">满意</div>
+                                            </div>
+                                        </div>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="label-checkbox item-content">
+                                        <input class="ck-no" type="radio" name="{{subQuestion.id}}" data-qid="{{subQuestion.id}}">
+                                        <div class="item-media"><i class="icon icon-form-checkbox"></i></div>
+                                        <div class="item-inner">
+                                            <div class="item-title-row">
+                                                <div class="item-title">不满意</div>
+                                            </div>
+                                        </div>
+                                    </label>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
         </template>
         <div class="content-block">
-            <a data-pageid="{{page.pageID}}" data-qtype="{{page.questionType}}" data-pageindex="{{pageIndex}}" v-on:click="submit" class="button button-big">
-                {{pageIndex < (pages.length-1)?("提交进入下一个问卷("+(pageIndex+1)+"/"+pages.length+")"):"提交问卷并抽奖"}}
-            </a>
+            @*0：未提交，1：已提交未抽奖，2：已抽奖*@
+            <a data-status="0" class="button button-big" v-on:click="confirm">提交问卷</a>
         </div>
     </div>
 </div>
 
-
-
 @section scripts{
-    <script src="/Scripts/vue.min.js"></script>
+    <script src="/Scripts/vue.js"></script>
     <script src="~/Scripts/questionaire.js"></script>
     <script>
-        var preQuestioning = false;
-        var vueLoaded = false;
-        var comp = false;
-        var submitting = false;
-        $('#optDay .button').on('click', function () {
-            if (preQuestioning || vueLoaded) return;
-            preQuestioning = true;
-            $.showPreloader("加载问卷中...");
-            preQuestioning = false;
+        app = new Vue({
+            el: '#pageGroup',
+            ready: function () {
+                $.init();
+            },
+            data: {
+                dayID :'day1',
+                identities: dayIdentity.day1,
+                questionaireData: {},
+                userInfo: {},
+            },
+            methods: {
+                optDay: function (e) {
+                    // 根据data-day设置身份按钮
+                    var $this = $(e.target);
+                    var dayID = $this.attr('data-day');
+                    if (dayID === 'day1') {
+                        this.identities = dayIdentity.day1;
+                        this.dayID = 'day1';
+                    } else if (dayID === 'day2') {
+                        this.identities = dayIdentity.day2;
+                        this.dayID = 'day2';
+                    }
 
-            var $this = $(this);
-            var id = $this.attr('id');
-            app = new Vue({
-                el: '#pageGroup',
-                ready: function () {
-                    vueLoaded = true;
-                    $this.attr('href', '#userInfo');
-                    $.init();
-                    $.hidePreloader();
+                    // 路由跳转至身份页面
+                    $.router.load('#optIdentity', false);
                 },
-                data: {
-                    pages: id === 'day1' ? dataDay1 : dataDay2,
-                },
-                methods: {
-                    beginQuestion: function (e) {
-                        var uname = $("#uname").val();
-                        var customerType = $("#customerType").val();
-                        var position = $("#position").val();
-                        if (!uname || !customerType || !position) {
-                            $.toast("请输入您的信息");
-                            return;
-                        }
-                        userInfo.name = uname;
-                        userInfo.customerType = customerType;
-                        userInfo.position = position;
+                optIdentity: function (e) {
+                    // 根据data-id设置问卷内容
+                    var $this = $(e.target);
+                    var dataID = $this.attr('data-id');
+                    var dataArray = this.dayID === 'day1' ? dataDay1 : dataDay2;
+                    this.questionaireData = $.grep(dataArray, function (value) {
+                        return value.pageID === dataID;
+                    })[0];
 
-                        console.log('begin question');
-                        $("#bgimg").hide();
-                        $("#pageGroup").css("text-align", "inherit");
-                        var $this = $(e.target);
-                        $this.attr('href', "#" + this.pages[0].pageID);
-                    },
-                    submit: function (e, isRoute) {
-                        if (submitting || isRoute) {
-                            return;
-                        }
-                        if (comp) {
-                            $.toast("您已经提交过，重复提交是无效滴咧");
-                            return;
-                        }
-                        var $this = $(e.target);
-                        var $curPage = $("#" + $this.attr("data-pageid"));
-                        var curPageIdx = parseInt($this.attr("data-pageindex"));
-                        var qtype = $this.attr("data-qtype");   // 问卷类型
-                        var qData = {}; // 问卷数据
-                        $curPage.find(".ck").each(function (idx, el) {
-                            var $el = $(el);
-                            var qid = $el.attr('data-qid');
-                            var checked = $el.attr('checked') ? true : false;
-                            qData[qid] = checked;
-                        });
-                        console.log('begin submit');
-                        $.showPreloader("正在提交问卷...");
-                        $.ajax({
-                            url: "/SC/UploadQuestionaire",
-                            data: {
-                                qtype: qtype,
-                                qdata: JSON.stringify(qData),
-                                user: JSON.stringify(userInfo),
-                            },
-                            dataType: "json",
-                            async: true,
-                            success: function (data) {
-                                if (!data.ok) {
-                                    $.alert(data.msg);
-                                    return;
+                    this.userInfo.position = $this.html();
+                    // 路由跳转至姓名职位页面
+                    $.router.load('#userInfo', false);
+                },
+                beginQuestion: function (e) {
+                    // 填充userinfo
+                    var uname = $("#uname").val();
+                    var customerType = $("#customerType").val();
+                    if (!uname || !customerType) {
+                        $.toast("请输入您的信息");
+                        return;
+                    }
+                    this.userInfo.name = uname;
+                    this.userInfo.customerType = customerType;
+
+                    // 路由跳转至问卷页面
+                    $.router.load('#questionaire', false);
+                    //$.alert("请您仔细回答下面问题，不满意的请忽略不选哦^_^");
+                },
+                confirm: function (e) {
+                    // 根据data-status获取要做的动作
+                    var $this = $(e.target);
+                    var status = $this.attr('data-status');
+                    switch (status) {
+                        // 0：未提交
+                        case "0":
+                            $.showPreloader("正在提交问卷...");
+                            var qLength = this.questionaireData.questions.length * 6 - 3,
+                                qck = $('#questionaire').find(".ck-yes,.ck-no"),
+                                qData = {}, // 问卷数据
+                                qCheckedLength = 0;
+                            qck.each(function (idx, el) {
+                                var $el = $(el);
+                                var qid = $el.attr('data-qid');
+                                var checked = $el.attr('checked') ? true : false;
+                                if (checked) {
+                                    qCheckedLength++;
                                 }
-                                $.toast("问卷上传成功");
-                                // 是否需要抽奖
-                                if (curPageIdx !== (app.pages.length - 1)) {
-                                    var url = "#" + app.pages[curPageIdx + 1].pageID;
-                                    //$this.attr("href", url);          // ajax异步，设置href路由不会自动跳转
-                                    $.router.load(url, false);           // 所以改为手动控制
+                                if ($el.hasClass('ck-yes')) {
+                                    qData[qid] = checked;
+                                }
+                            });
+
+                            if (qCheckedLength < qLength) {
+                                $.hidePreloader();
+                                $.alert("请答完所有题目再提交");
+                                return;
+                            }
+                            $.ajax({
+                                url: "/SC/UploadQuestionaire",
+                                data: {
+                                    qtype: app.questionaireData.questionType,
+                                    qdata: JSON.stringify(qData),
+                                    user: JSON.stringify(app.userInfo),
+                                },
+                                dataType: "json",
+                                success: function (data) {
+                                    if (!data.ok) {
+                                        $.alert(data.msg);
+                                        return;
+                                    }
+                                    $.toast("问卷上传成功");
+                                    $this.attr('data-status', '1');
+                                    $this.html('点我抽奖');
                                     $.hidePreloader();
-                                    return;
+                                },
+                                error: function (xhr, type, error) {
+                                    $.alert('问卷上传失败(' + type + ')');
+                                    $.hidePreloader();
                                 }
-                                comp = true;
-                                $('.modal-title').html("正在抽奖...");
-                                var msg = "谢谢参与";
-                                var num = Math.floor(Math.random() * 1000 + 1);
-                                if (num > 23) {
-                                    setTimeout(function () {
+                            });
+                            break;
+                        // 1，已提交未抽奖
+                        case "1":
+                            $.showPreloader("正在抽奖...");
+                            var msg = "谢谢参与";
+                            var num = Math.floor(Math.random() * 1000 + 1);
+                            if (num>23) {
+                                setTimeout(function () {
+                                    $this.attr('data-status', '2');
+                                    $.alert(msg);
+                                    $.hidePreloader();
+                                }, 1000);
+                            } else {
+                                $.ajax({
+                                    url: '@Url.Action("AddPrizeWinner")',
+                                    dataType: "json",
+                                    data: { type: app.questionaireData.questionType },
+                                    success: function (data) {
+                                        var ok = data.ok;   // 中奖人数是否超限，上限为1
+                                        msg = ok ? "恭喜你中奖了" : "谢谢参与";
+                                        $this.attr('data-status', '2');
+                                    },
+                                    complete: function () {
                                         $.alert(msg);
                                         $.hidePreloader();
-                                    }, 1000);
-                                } else {
-                                    $.ajax({
-                                        url: '@Url.Action("AddPrizeWinner")',
-                                        dataType: "json",
-                                        success: function (data) {
-                                            var ok = data.ok;   // 中奖人数是否超限，上限为8
-                                            msg = ok ? "恭喜你中奖了" : "谢谢参与";
-                                        },
-                                        complete: function () {
-                                            $.alert(msg);
-                                            $.hidePreloader();
-                                        }
-                                    });
-                                }
-                            },
-                            error: function (data) {
-                                $.hidePreloader();
-                                $.alert(data.msg);
-                            },
-                            complete: function () {
-                                submitting = false;
+                                    }
+                                });
                             }
-                        });
+                            break;
+                        // 2，已抽奖
+                        case "2":
+                            $.toast("您已经抽过奖了哦！");
+                            break;
+                        default:
+                            break;
                     }
-                }
-            });
-        })
+                },
+            }
+        });
     </script>
 }

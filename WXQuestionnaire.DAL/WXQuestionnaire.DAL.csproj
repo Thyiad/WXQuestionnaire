@@ -101,6 +101,10 @@
     <Compile Include="Migrations\201603070255241_addQtime.Designer.cs">
       <DependentUpon>201603070255241_addQtime.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201603120936562_add-questionairePrizeNum.cs" />
+    <Compile Include="Migrations\201603120936562_add-questionairePrizeNum.Designer.cs">
+      <DependentUpon>201603120936562_add-questionairePrizeNum.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -150,6 +154,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201603070255241_addQtime.resx">
       <DependentUpon>201603070255241_addQtime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603120936562_add-questionairePrizeNum.resx">
+      <DependentUpon>201603120936562_add-questionairePrizeNum.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

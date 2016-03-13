@@ -91,7 +91,8 @@
             }else{
                 $.ajax({
                     url:'@Url.Action("AddPrizeWinner")',
-                    dataType:"json",
+                    dataType: "json",
+                    data:{type:'00'},
                     success:function(data){
                         var ok = data.ok;   // 中奖人数是否超限，上限为8
                         msg = ok? "恭喜你中奖了" : "谢谢参与";

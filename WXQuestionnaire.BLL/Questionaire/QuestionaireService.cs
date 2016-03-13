@@ -48,6 +48,7 @@ namespace WXQuestionnaire.BLL.Questionaire
                 using (EFContext context = new EFContext())
                 {
                     var qList = context.Questionaires.Where(q => q.QuestionaireType == (int)qtype).ToList();
+                    statVM.QuestionaireCount = qList.Count;
                     var detailList = qList.Select(q => Newtonsoft.Json.JsonConvert.DeserializeObject<mQuestionaire.QuestionaireDetail>(q.QuestionaireDetail)).ToList();
                     // 项目组织安排
                     statVM.Q01Num = detailList.Count(d => d.Q01);
@@ -114,6 +115,7 @@ namespace WXQuestionnaire.BLL.Questionaire
                 using (EFContext context = new EFContext())
                 {
                     var questionaire = context.Questionaires.Where(q => q.ID == qid).FirstOrDefault();
+                    statVM.QuestionaireCount = 1;
                     var detail = Newtonsoft.Json.JsonConvert.DeserializeObject<mQuestionaire.QuestionaireDetail>(questionaire.QuestionaireDetail);
                     // 项目组织安排
                     statVM.Q01Num = detail.Q01 ? 1 : 0;
