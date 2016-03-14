@@ -115,8 +115,8 @@ namespace WXQuestionnaire.BLL.Chartlet
 
                         y += (currentSize.Height + ((i == (msgList.Count - 1)) ? spaceName : spaceMsg));
                     }
-                    var nameSize = StrUtil.MeasureString("by  "+chartlet.SignName,f);
-                    g.DrawString("by  "+chartlet.SignName, f, b, new PointF(dstWith - nameSize.Width - spaceNameRight +paddingInner, y));
+                    var nameSize = StrUtil.MeasureString(chartlet.SignName,f);
+                    g.DrawString(chartlet.SignName, f, b, new PointF(dstWith - nameSize.Width - spaceNameRight +paddingInner, y));
                 }
 
                 // 为图片加相框
