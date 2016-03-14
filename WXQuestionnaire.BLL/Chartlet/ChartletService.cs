@@ -120,28 +120,28 @@ namespace WXQuestionnaire.BLL.Chartlet
                 }
 
                 // 为图片加相框
-                int paddingOutterTop = 60;
-                int paddingOutterLeft = 60;
-                int paddingOutterRight = 20;
-                int paddingOutterBottom = 20;
-                Bitmap frameBitmap = new Bitmap(dstBitmap.Width+paddingOutterLeft+paddingOutterRight,dstBitmap.Height+paddingOutterTop+paddingOutterBottom);
-                using (Graphics g = Graphics.FromImage(frameBitmap))
-                {
-                    string frameBgImgPath = HttpContext.Current.Server.MapPath("/img/bg-chartlet.jpg");
-                    Bitmap frameBgImg = new Bitmap(frameBgImgPath);
-                    g.DrawImage(frameBgImg, 0, 0);
-                    Rectangle r = new Rectangle(new Point(paddingOutterLeft, paddingOutterTop), new Size(dstBitmap.Width, dstBitmap.Height));
-                    g.DrawImage(dstBitmap, r);
-                    frameBgImg.Dispose();
-                }
+                //int paddingOutterTop = 60;
+                //int paddingOutterLeft = 60;
+                //int paddingOutterRight = 20;
+                //int paddingOutterBottom = 20;
+                //Bitmap frameBitmap = new Bitmap(dstBitmap.Width+paddingOutterLeft+paddingOutterRight,dstBitmap.Height+paddingOutterTop+paddingOutterBottom);
+                //using (Graphics g = Graphics.FromImage(frameBitmap))
+                //{
+                //    string frameBgImgPath = HttpContext.Current.Server.MapPath("/img/bg-chartlet.jpg");
+                //    Bitmap frameBgImg = new Bitmap(frameBgImgPath);
+                //    g.DrawImage(frameBgImg, 0, 0);
+                //    Rectangle r = new Rectangle(new Point(paddingOutterLeft, paddingOutterTop), new Size(dstBitmap.Width, dstBitmap.Height));
+                //    g.DrawImage(dstBitmap, r);
+                //    frameBgImg.Dispose();
+                //}
 
                 string dstVirtualPath = "/Data/Chartlets/" + chartlet.ServerIDWX + ".jpg";
                 string dstPath = HttpContext.Current.Server.MapPath(dstVirtualPath);
-                frameBitmap.Save(dstPath);
+                dstBitmap.Save(dstPath);
                 chartlet.BuildImgPath = dstVirtualPath;
                 srcBitmap.Dispose();
                 dstBitmap.Dispose();
-                frameBitmap.Dispose();
+                //frameBitmap.Dispose();
                 return true;
             }
             catch (Exception ex)

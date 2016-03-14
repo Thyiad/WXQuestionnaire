@@ -20,7 +20,8 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
-    <TypeScriptToolsVersion>1.0</TypeScriptToolsVersion>
+    <TypeScriptToolsVersion>1.7</TypeScriptToolsVersion>
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -252,8 +253,9 @@
     <Content Include="Content\Site.css" />
     <Content Include="Content\sm.css" />
     <Content Include="Data\WXTemplates\WXReply_Text.xml" />
-    <Content Include="img\bg-chartlet.jpg" />
     <Content Include="img\bg-questionaire.jpg" />
+    <Content Include="img\bg-chartlet.jpg" />
+    <Content Include="img\logo.jpg" />
     <Content Include="Scripts\html2canvas.js" />
     <Content Include="Scripts\html2canvas.min.js" />
     <Content Include="Scripts\questionaire.js" />

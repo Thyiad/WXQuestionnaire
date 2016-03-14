@@ -22,6 +22,16 @@
             padding: 20px 0;
             height: 5.2em;
         }
+        .log-wrapper{
+            margin-top:50px;
+            text-align:center;
+        }
+        .logo{
+            margin-left:auto;
+             margin-right:auto; 
+             height:100px;
+             width:auto;
+        }
     </style>
 }
 <div id="optDay" class="page page-current">
@@ -32,6 +42,7 @@
         <p style="padding-top:20px">
             <a class="button button-big" data-day="day2" v-on:click="optDay"> 第2天<br />(Day2)</a>
         </p>
+        <p class="log-wrapper"><img src="~/img/logo.jpg" class="logo" alt="" /></p>
     </div>
 </div>
 <div id="optIdentity" class="page">
@@ -39,6 +50,7 @@
         <p v-bind:style="'padding-top:'+$index==0?'50px':'20px'" v-for="identity in identities">
             <a class="button button-big" data-id="{{identity.id}}" v-on:click="optIdentity">{{identity.text}}</a>
         </p>
+        <p class="log-wrapper"><img src="~/img/logo.jpg" class="logo" alt="" /></p>
     </div>
 </div>
 <div id="userInfo" class="page">
@@ -87,6 +99,7 @@
             <a id="beginQuestion" v-on:click="beginQuestion" class="button button-big">
                 开始问卷
             </a>
+            <p class="log-wrapper"><img src="~/img/logo.jpg" class="logo" alt="" /></p>
         </div>
     </div>
 </div>

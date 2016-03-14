@@ -11,6 +11,7 @@
     <WebStackScaffolding_AreaDialogWidth>600</WebStackScaffolding_AreaDialogWidth>
     <ProjectView>ShowAllFiles</ProjectView>
     <NameOfLastUsedPublishProfile>publish local</NameOfLastUsedPublishProfile>
+    <ToolsVersionPromptShown>1.7</ToolsVersionPromptShown>
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>
