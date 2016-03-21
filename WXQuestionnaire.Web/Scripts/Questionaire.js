@@ -12,7 +12,7 @@ var dayIdentity = {
     day1: [
         {
             id: "d1DZ",
-            text: "店长/商品场",
+            text: "店长/商品",
         },
         {
             id: "d1PPJLDD",
@@ -30,7 +30,7 @@ var dayIdentity = {
     day2: [
         {
             id: "d2DZ",
-            text: "店长/商品场",
+            text: "店长",
         },
         {
             id: "d2PPJLDD",
@@ -38,7 +38,7 @@ var dayIdentity = {
         },
         {
             id: "d2CLPX",
-            text: "陈列",
+            text: "陈列/培训",
         },
         {
             id: "d2CL",
@@ -620,15 +620,15 @@ $("#customerType").picker({
       }
     ]
 });
-$("#position").picker({
-    toolbarTemplate: '<header class="bar bar-nav">\
-              <button class="button button-link pull-right close-picker">确定</button>\
-              <h1 class="title">请选择职位</h1>\
-              </header>',
-    cols: [
-      {
-          textAlign: 'center',
-          values: ['品牌经理', '督导', '店长','商品']
-      }
-    ]
-});
+//$("#position").picker({
+//    toolbarTemplate: '<header class="bar bar-nav">\
+//              <button class="button button-link pull-right close-picker">确定</button>\
+//              <h1 class="title">请选择职位</h1>\
+//              </header>',
+//    cols: [
+//      {
+//          textAlign: 'center',
+//          values: ['品牌经理', '督导', '店长','商品']
+//      }
+//    ]
+//});

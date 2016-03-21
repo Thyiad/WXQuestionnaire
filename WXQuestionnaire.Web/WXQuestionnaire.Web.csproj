@@ -295,6 +295,7 @@
     <Content Include="Areas\Admin\Views\Questionaire\QueryDetail.cshtml" />
     <Content Include="Areas\Admin\Views\Questionaire\QueryDetailByQID.cshtml" />
     <Content Include="fonts\新蒂黑板报.ttf" />
+    <Content Include="Areas\Admin\Views\Chartlet\Index.cshtml" />
     <None Include="Properties\PublishProfiles\publish local.pubxml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\jqBootstrapValidation.js" />
@@ -308,6 +309,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\ChartletController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\QuestionaireController.cs" />
     <Compile Include="Areas\Admin\Infrastructure\AdminAuthenticationAttribute.cs" />

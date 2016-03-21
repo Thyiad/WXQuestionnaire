@@ -29,7 +29,7 @@ namespace WXQuestionnaire.BLL.Chartlet
                     };
 
                     // 从微信服务器下载图片
-                    var oriImgPath = WXUtil.DownloadFile(serverID,".jpg");
+                    var oriImgPath = WXUtil.DownloadFile(serverID, ".jpg");
                     if (oriImgPath == null) return null;
                     charlet.OriginalImgPath = oriImgPath;
 
@@ -49,19 +49,28 @@ namespace WXQuestionnaire.BLL.Chartlet
                 LogHelper.Error(ex);
                 return null;
             }
-            
+
         }
 
         public mChartlet.Chartlet GetChartlet(int id)
         {
             using (EFContext context = new EFContext())
             {
-               var chartlet = context.Chartlets.Where(c => c.ID == id).FirstOrDefault();
-               return chartlet;
+                var chartlet = context.Chartlets.Where(c => c.ID == id).FirstOrDefault();
+                return chartlet;
             }
         }
 
-        private bool DrawChartlet(mChartlet.Chartlet chartlet) 
+        public List<mChartlet.Chartlet> GetAllChartlet()
+        {
+            using (EFContext context = new EFContext())
+            {
+                return context.Chartlets.ToList();
+            }
+
+        }
+
+        private bool DrawChartlet(mChartlet.Chartlet chartlet)
         {
             try
             {
@@ -70,13 +79,13 @@ namespace WXQuestionnaire.BLL.Chartlet
                 Bitmap srcBitmap = new Bitmap(srcImgPath);
                 var fonts = new System.Drawing.Text.PrivateFontCollection();
                 fonts.AddFontFile(HttpContext.Current.Server.MapPath("/fonts/新蒂黑板报.ttf"));
-                Font f = new Font(fonts.Families[0],11);
+                Font f = new Font(fonts.Families[0], 11);
                 Brush b = Brushes.Black;
-                int paddingInner = 15; 
+                int paddingInner = 15;
                 int spaceImg = 20;
                 int spaceMsg = 5;
                 int spaceName = 50;
-                int spaceNameRight=15;
+                int spaceNameRight = 15;
                 int spaceBottom = 0;
 
                 // 目标图的宽=原图的宽
@@ -89,14 +98,14 @@ namespace WXQuestionnaire.BLL.Chartlet
 
                 int dstHeight = rateHeight;
                 List<string> msgList = new List<string>();
-                List<string> oriMsgList = chartlet.MsgText.Split(new string[] { "\n"}, StringSplitOptions.RemoveEmptyEntries).ToList();
+                List<string> oriMsgList = chartlet.MsgText.Split(new string[] { "\n" }, StringSplitOptions.RemoveEmptyEntries).ToList();
                 foreach (var item in oriMsgList)
                 {
-                    msgList.AddRange(StrUtil.SplitStringByWidth(item,dstWith, f));
+                    msgList.AddRange(StrUtil.SplitStringByWidth(item, dstWith, f));
                 }
                 int normalTextHeight = StrUtil.MeasureString(oriMsgList[0], f).Height;
                 dstHeight = rateHeight + spaceImg + msgList.Count * normalTextHeight +
-                    (msgList.Count - 1) * spaceMsg + spaceName +normalTextHeight+ spaceBottom;
+                    (msgList.Count - 1) * spaceMsg + spaceName + normalTextHeight + spaceBottom;
 
                 // 开始绘图
                 Bitmap dstBitmap = new Bitmap(dstWith + paddingInner * 2, dstHeight + paddingInner * 2);
@@ -107,16 +116,16 @@ namespace WXQuestionnaire.BLL.Chartlet
                     g.FillRectangle(Brushes.White, 0, 0, dstBitmap.Width, dstBitmap.Height);
                     Rectangle r = new Rectangle(new Point(x, y), new Size(dstWith, rateHeight));
                     g.DrawImage(srcBitmap, r);
-                    y = y+rateHeight + spaceImg;
+                    y = y + rateHeight + spaceImg;
                     for (int i = 0; i < msgList.Count; i++)
                     {
-                        Size currentSize= StrUtil.MeasureString(msgList[i],f);
-                        g.DrawString(msgList[i], f, b, new PointF((dstWith - currentSize.Width) / 2 +x, y));
+                        Size currentSize = StrUtil.MeasureString(msgList[i], f);
+                        g.DrawString(msgList[i], f, b, new PointF((dstWith - currentSize.Width) / 2 + x, y));
 
                         y += (currentSize.Height + ((i == (msgList.Count - 1)) ? spaceName : spaceMsg));
                     }
-                    var nameSize = StrUtil.MeasureString(chartlet.SignName,f);
-                    g.DrawString(chartlet.SignName, f, b, new PointF(dstWith - nameSize.Width - spaceNameRight +paddingInner, y));
+                    var nameSize = StrUtil.MeasureString(chartlet.SignName, f);
+                    g.DrawString(chartlet.SignName, f, b, new PointF(dstWith - nameSize.Width - spaceNameRight + paddingInner, y));
                 }
 
                 // 为图片加相框

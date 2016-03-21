@@ -9,16 +9,16 @@ namespace WXQuestionnaire.Model.Questionaire
     public enum QuestionaireTypes
     {
         // 第一天
-        店长兼商品场D1 = 11,
+        店长兼商品D1 = 11,
         品牌经理兼督导D1 = 12,
         培训兼陈列D1 = 13,
         //商品D1 = 14,
 
         // 第二天
-        店长兼商品场D2 = 21,
+        店长D2 = 21,
         品牌经理兼督导D2 = 22,
-        陈列D2 = 23,
-        培训D2 = 24,
+        陈列兼培训D2 = 23,
+        陈列D2 = 24,
     }
 
     public class QuestionaireDetail

@@ -1,0 +1,57 @@
+﻿@model List<WXQuestionnaire.Model.Chartlet.Chartlet>
+ @{ 
+     ViewBag.Title = "Chartlet图片浏览";
+     Layout = null;
+ }
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet">
+    <style type="text/css">
+        body{
+            background-color:black;
+        }
+        .carousel-indicators{
+            bottom:-100px;
+            top:20px;
+        }
+        img{
+            margin:auto;
+            margin-top:75px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="myCarousel" class="carousel slide">
+        <!-- 轮播（Carousel）指标 -->
+        <ol class="carousel-indicators">
+            @{
+                for (int i = 0; i < Model.Count; i++)
+                {
+                    <li data-target="#myCarousel" data-slide-to="@i" class="@(i==0?"active":"")"></li>
+                }
+            }
+        </ol>
+        <!-- 轮播（Carousel）项目 -->
+        <div class="carousel-inner">
+            @{
+                for (int i = 0; i < Model.Count; i++)
+                {
+                    <div class="item @(i==0?"active":"")">
+                        <img src="@Model[i].BuildImgPath" alt="@Model[i].CreateDate">
+                    </div>
+                }
+            }
+        </div>
+        <!-- 轮播（Carousel）导航 -->
+        <a class="carousel-control left" href="#myCarousel"
+           data-slide="prev">&lsaquo;</a>
+        <a class="carousel-control right" href="#myCarousel"
+           data-slide="next">&rsaquo;</a>
+    </div>
+    <script src="~/Scripts/jquery-2.2.0.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</body>
+</html>
