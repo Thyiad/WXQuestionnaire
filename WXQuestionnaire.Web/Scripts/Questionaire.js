@@ -16,11 +16,11 @@ var dayIdentity = {
         },
         {
             id: "d1PPJLDD",
-            text: "品牌经理/督导",
+            text: "品牌经理&督导",
         },
         {
             id: "d1CLPX",
-            text: "培训/陈列",
+            text: "培训&陈列",
         },
         //{
         //    id: "d1SP",
@@ -34,11 +34,11 @@ var dayIdentity = {
         },
         {
             id: "d2PPJLDD",
-            text: "品牌经理/督导",
+            text: "品牌经理&督导",
         },
         {
             id: "d2CLPX",
-            text: "陈列/培训",
+            text: "陈列",
         },
         {
             id: "d2CL",

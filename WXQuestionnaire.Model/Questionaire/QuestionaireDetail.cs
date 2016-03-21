@@ -17,8 +17,8 @@ namespace WXQuestionnaire.Model.Questionaire
         // 第二天
         店长D2 = 21,
         品牌经理兼督导D2 = 22,
-        陈列兼培训D2 = 23,
-        陈列D2 = 24,
+        陈列D2 = 23,
+        培训D2 = 24,
     }
 
     public class QuestionaireDetail
