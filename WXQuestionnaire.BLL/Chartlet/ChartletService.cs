@@ -70,7 +70,7 @@ namespace WXQuestionnaire.BLL.Chartlet
                 Bitmap srcBitmap = new Bitmap(srcImgPath);
                 var fonts = new System.Drawing.Text.PrivateFontCollection();
                 fonts.AddFontFile(HttpContext.Current.Server.MapPath("/fonts/新蒂黑板报.ttf"));
-                Font f = new Font(fonts.Families[0],9);
+                Font f = new Font(fonts.Families[0],11);
                 Brush b = Brushes.Black;
                 int paddingInner = 15; 
                 int spaceImg = 20;

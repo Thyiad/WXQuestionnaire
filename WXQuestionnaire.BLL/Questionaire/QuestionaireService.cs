@@ -197,11 +197,38 @@ namespace WXQuestionnaire.BLL.Questionaire
                             SubQ5Num = detailList.Count(d => d.Q65),
                             SubQ6Num = detailList.Count(d => d.Q66),
                         },
+                         new mQuestionaire.QuestionaireStatVM.QuestionStat {
+                            QuestionName= "第7个问题",
+                            SubQ1Num = detailList.Count(d => d.Q71),
+                            SubQ2Num = detailList.Count(d => d.Q72),
+                            SubQ3Num = detailList.Count(d => d.Q73),
+                            SubQ4Num = detailList.Count(d => d.Q74),
+                            SubQ5Num = detailList.Count(d => d.Q75),
+                            SubQ6Num = detailList.Count(d => d.Q76),
+                        },
+                          new mQuestionaire.QuestionaireStatVM.QuestionStat {
+                            QuestionName= "第8个问题",
+                            SubQ1Num = detailList.Count(d => d.Q81),
+                            SubQ2Num = detailList.Count(d => d.Q82),
+                            SubQ3Num = detailList.Count(d => d.Q83),
+                            SubQ4Num = detailList.Count(d => d.Q84),
+                            SubQ5Num = detailList.Count(d => d.Q85),
+                            SubQ6Num = detailList.Count(d => d.Q86),
+                        },
+                           new mQuestionaire.QuestionaireStatVM.QuestionStat {
+                            QuestionName= "第9个问题",
+                            SubQ1Num = detailList.Count(d => d.Q91),
+                            SubQ2Num = detailList.Count(d => d.Q92),
+                            SubQ3Num = detailList.Count(d => d.Q93),
+                            SubQ4Num = detailList.Count(d => d.Q94),
+                            SubQ5Num = detailList.Count(d => d.Q95),
+                            SubQ6Num = detailList.Count(d => d.Q96),
+                        },
             };
-            int length = 6;
+            int length = 9;
             switch (qtype)
             {
-                case WXQuestionnaire.Model.Questionaire.QuestionaireTypes.店长D1:
+                case WXQuestionnaire.Model.Questionaire.QuestionaireTypes.店长兼商品场D1:
                     length = mQuestionaire.QuestionaireConstants.Q11Names.Count;
                     break;
                 case WXQuestionnaire.Model.Questionaire.QuestionaireTypes.品牌经理兼督导D1:
@@ -210,19 +237,19 @@ namespace WXQuestionnaire.BLL.Questionaire
                 case WXQuestionnaire.Model.Questionaire.QuestionaireTypes.培训兼陈列D1:
                     length = mQuestionaire.QuestionaireConstants.Q13Names.Count;
                     break;
-                case WXQuestionnaire.Model.Questionaire.QuestionaireTypes.商品D1:
-                    length = mQuestionaire.QuestionaireConstants.Q14Names.Count;
-                    break;
-                case WXQuestionnaire.Model.Questionaire.QuestionaireTypes.店长D2:
+                //case WXQuestionnaire.Model.Questionaire.QuestionaireTypes.商品D1:
+                //    length = mQuestionaire.QuestionaireConstants.Q14Names.Count;
+                //    break;
+                case WXQuestionnaire.Model.Questionaire.QuestionaireTypes.店长兼商品场D2:
                     length = mQuestionaire.QuestionaireConstants.Q21Names.Count;
                     break;
                 case WXQuestionnaire.Model.Questionaire.QuestionaireTypes.品牌经理兼督导D2:
                     length = mQuestionaire.QuestionaireConstants.Q22Names.Count;
                     break;
-                case WXQuestionnaire.Model.Questionaire.QuestionaireTypes.陈列兼培训D2:
+                case WXQuestionnaire.Model.Questionaire.QuestionaireTypes.陈列D2:
                     length = mQuestionaire.QuestionaireConstants.Q23Names.Count;
                     break;
-                case WXQuestionnaire.Model.Questionaire.QuestionaireTypes.陈列D2:
+                case WXQuestionnaire.Model.Questionaire.QuestionaireTypes.培训D2:
                     length = mQuestionaire.QuestionaireConstants.Q24Names.Count;
                     break;
                 default:
@@ -239,21 +266,21 @@ namespace WXQuestionnaire.BLL.Questionaire
         {
             switch (qtype)
             {
-                case WXQuestionnaire.Model.Questionaire.QuestionaireTypes.店长D1:
+                case WXQuestionnaire.Model.Questionaire.QuestionaireTypes.店长兼商品场D1:
                     return mQuestionaire.QuestionaireConstants.Q11Names[qidx];
                 case WXQuestionnaire.Model.Questionaire.QuestionaireTypes.品牌经理兼督导D1:
                     return mQuestionaire.QuestionaireConstants.Q12Names[qidx];
                 case WXQuestionnaire.Model.Questionaire.QuestionaireTypes.培训兼陈列D1:
                     return mQuestionaire.QuestionaireConstants.Q13Names[qidx];
-                case WXQuestionnaire.Model.Questionaire.QuestionaireTypes.商品D1:
-                    return mQuestionaire.QuestionaireConstants.Q14Names[qidx];
-                case WXQuestionnaire.Model.Questionaire.QuestionaireTypes.店长D2:
+                //case WXQuestionnaire.Model.Questionaire.QuestionaireTypes.商品D1:
+                //    return mQuestionaire.QuestionaireConstants.Q14Names[qidx];
+                case WXQuestionnaire.Model.Questionaire.QuestionaireTypes.店长兼商品场D2:
                     return mQuestionaire.QuestionaireConstants.Q21Names[qidx];
                 case WXQuestionnaire.Model.Questionaire.QuestionaireTypes.品牌经理兼督导D2:
                     return mQuestionaire.QuestionaireConstants.Q22Names[qidx];
-                case WXQuestionnaire.Model.Questionaire.QuestionaireTypes.陈列兼培训D2:
-                    return mQuestionaire.QuestionaireConstants.Q23Names[qidx];
                 case WXQuestionnaire.Model.Questionaire.QuestionaireTypes.陈列D2:
+                    return mQuestionaire.QuestionaireConstants.Q23Names[qidx];
+                case WXQuestionnaire.Model.Questionaire.QuestionaireTypes.培训D2:
                     return mQuestionaire.QuestionaireConstants.Q24Names[qidx];
                 default:
                     throw new Exception("找不到 qtype");

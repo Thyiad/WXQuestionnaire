@@ -12,52 +12,55 @@ namespace WXQuestionnaire.Model.Questionaire
             "SU16 开季指引-市场推广",
             "SU16 开季指引-新品发布",
             "SU16 开季指引－陈列指引",
-            "慧眼识人-店铺人员招聘与管理 系列一",
-            "人才储备-培养",
-            "零售锦囊",
-        };
-        public static List<string> Q12Names = new List<string> { 
-            "零售锦囊",
-            "零售管理",
-            "慧眼识人-店铺人员招聘与管理 系列一",
-            "人才储备-培养",
-        };
-        public static List<string> Q13Names = new List<string> { 
-            "SU16市场推广",
-            "SU16新品发布-鞋",
-            "SU16新品发布-服装",
-            "VM:陈列实操",
-            "SU16陈列指引",
-        };
-        public static List<string> Q14Names = new List<string> { 
-            "零售规划",
             "商品规划",
-            "SU16市场推广",
-            "SU16新品发布-鞋",
-            "SU16新品发布-服装",
-        };
-        public static List<string> Q21Names = new List<string> { 
             "零售规划",
-            "商品规划",
             "视觉营销管理",
+            "零售日志的运用",
+            "后仓管理",
+            "MSP带教培训",
+        };
+        public static List<string> Q12Names = new List<string> {
+            "Leadership领导力",
+            "零售日志的运用",
+            "后仓管理",
+            "MSP带教培训",
+            "慧眼识人-店铺人员招聘与管理系列",
+            "知人善用-优质新员工的养成",
+        };
+        public static List<string> Q13Names = new List<string> {
+            "开季指引-SU16市场推广",
+            "开季指引-SU16新品发布-鞋类",
+            "开季指引-SU16新品发布-服装",
+            "开季指引－SU16陈列指引",
+        };
+        //public static List<string> Q14Names = new List<string> { 
+        //    "零售规划",
+        //    "商品规划",
+        //    "SU16市场推广",
+        //    "SU16新品发布-鞋",
+        //    "SU16新品发布-服装",
+        //};
+        public static List<string> Q21Names = new List<string> {
+            "慧眼识人-店铺人员招聘与管理系列",
+            "知人善用-优质新员工的养成",
             "行动计划",
         };
-        public static List<string> Q22Names = new List<string> { 
+        public static List<string> Q22Names = new List<string> {
+            "视觉营销管理",
             "零售规划",
             "商品规划",
-            "视觉营销管理",
             "行动计划",
         };
-        public static List<string> Q23Names = new List<string> { 
-            "培训:人才储备-培养",
-            "培训:零售锦囊",
-            "VM:陈列指引",
-            "VM:陈列实操",
+        public static List<string> Q23Names = new List<string> {
+            "开季指引－SU16陈列指引",
+            "开季指引－SU16陈列实操",
             "行动计划",
         };
-        public static List<string> Q24Names = new List<string> { 
-            "VM:陈列指引",
-            "VM:陈列实操",
+        public static List<string> Q24Names = new List<string> {
+            "知人善用-优质新员工的养成",
+            "零售日志的运用",
+            "后仓管理",
+            "MSP带教培训",
             "行动计划",
         };
     }

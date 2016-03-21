@@ -9,16 +9,16 @@ namespace WXQuestionnaire.Model.Questionaire
     public enum QuestionaireTypes
     {
         // 第一天
-        店长D1 = 11,
+        店长兼商品场D1 = 11,
         品牌经理兼督导D1 = 12,
         培训兼陈列D1 = 13,
-        商品D1 = 14,
+        //商品D1 = 14,
 
         // 第二天
-        店长D2 = 21,
+        店长兼商品场D2 = 21,
         品牌经理兼督导D2 = 22,
-        陈列兼培训D2 = 23,
-        陈列D2 = 24,
+        陈列D2 = 23,
+        培训D2 = 24,
     }
 
     public class QuestionaireDetail
@@ -68,5 +68,26 @@ namespace WXQuestionnaire.Model.Questionaire
         public bool Q64 { get; set; }
         public bool Q65 { get; set; }
         public bool Q66 { get; set; }
+        
+        public bool Q71 { get; set; }
+        public bool Q72 { get; set; }
+        public bool Q73 { get; set; }
+        public bool Q74 { get; set; }
+        public bool Q75 { get; set; }
+        public bool Q76 { get; set; }
+
+        public bool Q81 { get; set; }
+        public bool Q82 { get; set; }
+        public bool Q83 { get; set; }
+        public bool Q84 { get; set; }
+        public bool Q85 { get; set; }
+        public bool Q86 { get; set; }
+
+        public bool Q91 { get; set; }
+        public bool Q92 { get; set; }
+        public bool Q93 { get; set; }
+        public bool Q94 { get; set; }
+        public bool Q95 { get; set; }
+        public bool Q96 { get; set; }
     }
 }

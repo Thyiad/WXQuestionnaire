@@ -59,7 +59,8 @@ namespace WXQuestionnaire.Web.Controllers
         }
 
         private const int LotteryPrizerNum = 8;
-        private const int QuestionairePrizerNum = 1;
+        private const int Day1PrizerNum = 63;
+        private const int Day2PrizerNum = 63;
         public ActionResult AddPrizeWinner(string type)
         {
             bool ok = false;
@@ -74,50 +75,25 @@ namespace WXQuestionnaire.Web.Controllers
                         ok = (stat != null && stat.PrizeWinnerNum < LotteryPrizerNum);
                         if(ok) stat.PrizeWinnerNum++;
                         break;
-                    // 店长D1
-                    case "11":
-                        ok = (stat != null && stat.D1DZPrizeNum < QuestionairePrizerNum);
-                        if (ok) stat.D1DZPrizeNum++;
+                    // day1抽奖
+                    case "11":   // 店长D1
+                    case "12":   // 品牌经理兼督导D1
+                    case "13":   // 培训兼陈列D1
+                    case "14":  // 商品D1
+                        ok = (stat != null && stat.Day1WinnerNum < Day1PrizerNum);
+                        if (ok) stat.Day1WinnerNum++;
                         break;
-                    // 品牌经理兼督导D1
-                    case "12":
-                        ok = (stat != null && stat.D1PPJLDDPrizeNum < QuestionairePrizerNum);
-                         if (ok) stat.D1PPJLDDPrizeNum++;
-                        break;
-                    // 培训兼陈列D1
-                    case "13":
-                        ok = (stat != null && stat.D1CLPXPrizeNum < QuestionairePrizerNum);
-                         if (ok) stat.D1CLPXPrizeNum++;
-                        break;
-                    // 商品D1
-                    case "14":
-                        ok = (stat != null && stat.D1SPPrizeNum < QuestionairePrizerNum);
-                         if (ok) stat.D1SPPrizeNum++;
-                        break;
-                    // 店长D2
-                    case "21":
-                        ok = (stat != null && stat.D2DZPrizeNum < QuestionairePrizerNum);
-                        if (ok) stat.D2DZPrizeNum++;
-                        break;
-                    // 品牌经理兼督导D2
-                    case "22":
-                        ok = (stat != null && stat.D2PPJLDDPrizeNum < QuestionairePrizerNum);
-                        if (ok) stat.D2PPJLDDPrizeNum++;
-                        break;
-                    // 陈列兼培训D2
-                    case "23":
-                        ok = (stat != null && stat.D2CLPXPrizeNum < QuestionairePrizerNum);
-                        if (ok) stat.D2CLPXPrizeNum++;
-                        break;
-                    // 陈列D2
-                    case "24":
-                        ok = (stat != null && stat.D2CLPrizeNum < QuestionairePrizerNum);
-                        if (ok) stat.D2CLPrizeNum++;
+                    // day2抽奖
+                    case "21":  // 店长D2
+                    case "22":  // 品牌经理兼督导D2
+                    case "23":  // 陈列兼培训D2
+                    case "24":  // 陈列D2
+                        ok = (stat != null && stat.Day2WinnerNum < Day2PrizerNum);
+                        if (ok) stat.Day2WinnerNum++;
                         break;
                     default:
                         break;
                 }
-
                 
                 if (ok)
                     ok = _statService.UpdateStat(stat);

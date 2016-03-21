@@ -311,6 +311,7 @@
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\QuestionaireController.cs" />
     <Compile Include="Areas\Admin\Infrastructure\AdminAuthenticationAttribute.cs" />
+    <Compile Include="Areas\Admin\Infrastructure\ViewService.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SCController.cs" />
     <Compile Include="Global.asax.cs">

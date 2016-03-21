@@ -24,7 +24,9 @@ namespace WXQuestionnaire.BLL.Admin
                         // 未初始化时就执行初始化
                         stat = new Stat
                         {
-                            PrizeWinnerNum = 0
+                            PrizeWinnerNum = 0,
+                            Day1WinnerNum = 0,
+                            Day2WinnerNum = 0,
                         };
 
                         context.Stats.Add(stat);

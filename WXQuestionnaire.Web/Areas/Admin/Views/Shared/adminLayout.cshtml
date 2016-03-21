@@ -20,7 +20,7 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                             <img alt="" class="img-circle" src="~/Content/admin/img/avatar3_small.jpg">
                             <span class="username username-hide-on-mobile">
-                                管理员
+                                @WXQuestionnaire.Web.Areas.Admin.Infrastructure.ViewService.CurrentAdmin.Name
                             </span>
                             <i class="fa fa-angle-down"></i>
                         </a>
@@ -46,184 +46,36 @@
                         <div class="sidebar-toggler">
                         </div>
                     </li>
-                    <li class="start active open">
-                        <a href="javascript:;">
-                            <i class="icon-home"></i>
-                            <span class="title">店长D1</span>
-                            <span class="selected"></span>
-                            <span class="arrow open"></span>
-                        </a>
-                        <ul class="sub-menu">
-                            <li>
-                                <a href="@Url.Action("QueryStat", "Questionaire", new { qtype =11})">
-                                    <i class="icon-bar-chart"></i>
-                                    问卷统计
+                    @{
+                        var menus = WXQuestionnaire.Web.Areas.Admin.Infrastructure.ViewService.Menus;
+                        for (int i = 0; i < menus.Count; i++)
+                        {
+                            var menu = menus[i];
+                            <li class="start @(i == 0 ? "active open" : "") ">
+                                <a href="javascript:;">
+                                    <i class="icon-home"></i>
+                                    <span class="title">@menu.Title</span>
+                                    <span class="selected"></span>
+                                    <span class="arrow open"></span>
                                 </a>
+                                <ul class="sub-menu">
+                                    @{
+                                        foreach (var item in menu.SubMenus)
+                                        {
+                                            <li>
+                                                <a href="@item.Href">
+                                                    <i class="icon-bar-chart"></i>
+                                                    @item.Title
+                                                </a>
+                                            </li>
+                                        }
+                                    }
+                                </ul>
                             </li>
-                            <li class="active">
-                                <a href="@Url.Action("QueryDetail", "Questionaire", new { qtype =11})">
-                                    <i class="icon-bulb"></i>
-                                    问卷明细
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="start  ">
-                        <a href="javascript:;">
-                            <i class="icon-home"></i>
-                            <span class="title">品牌经理&督导D1</span>
-                            <span class="selected"></span>
-                            <span class="arrow "></span>
-                        </a>
-                        <ul class="sub-menu">
-                            <li>
-                                <a href="@Url.Action("QueryStat", "Questionaire", new { qtype =12})">
-                                    <i class="icon-bar-chart"></i>
-                                    问卷统计
-                                </a>
-                            </li>
-                            <li class="active">
-                                <a href="@Url.Action("QueryDetail", "Questionaire", new { qtype =12})">
-                                    <i class="icon-bulb"></i>
-                                    问卷明细
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="start  ">
-                        <a href="javascript:;">
-                            <i class="icon-home"></i>
-                            <span class="title">培训&陈列D1</span>
-                            <span class="selected"></span>
-                            <span class="arrow "></span>
-                        </a>
-                        <ul class="sub-menu">
-                            <li>
-                                <a href="@Url.Action("QueryStat", "Questionaire", new { qtype =13})">
-                                    <i class="icon-bar-chart"></i>
-                                    问卷统计
-                                </a>
-                            </li>
-                            <li class="active">
-                                <a href="@Url.Action("QueryDetail", "Questionaire", new { qtype =13})">
-                                    <i class="icon-bulb"></i>
-                                    问卷明细
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="start  ">
-                        <a href="javascript:;">
-                            <i class="icon-home"></i>
-                            <span class="title">商品D1</span>
-                            <span class="selected"></span>
-                            <span class="arrow "></span>
-                        </a>
-                        <ul class="sub-menu">
-                            <li>
-                                <a href="@Url.Action("QueryStat", "Questionaire", new { qtype =14})">
-                                    <i class="icon-bar-chart"></i>
-                                    问卷统计
-                                </a>
-                            </li>
-                            <li class="active">
-                                <a href="@Url.Action("QueryDetail", "Questionaire", new { qtype =14})">
-                                    <i class="icon-bulb"></i>
-                                    问卷明细
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="start  ">
-                        <a href="javascript:;">
-                            <i class="icon-home"></i>
-                            <span class="title">店长D2</span>
-                            <span class="selected"></span>
-                            <span class="arrow "></span>
-                        </a>
-                        <ul class="sub-menu">
-                            <li>
-                                <a href="@Url.Action("QueryStat", "Questionaire", new { qtype =21})">
-                                    <i class="icon-bar-chart"></i>
-                                    问卷统计
-                                </a>
-                            </li>
-                            <li class="active">
-                                <a href="@Url.Action("QueryDetail", "Questionaire", new { qtype =21})">
-                                    <i class="icon-bulb"></i>
-                                    问卷明细
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="start  ">
-                        <a href="javascript:;">
-                            <i class="icon-home"></i>
-                            <span class="title">培训经理&督导D2</span>
-                            <span class="selected"></span>
-                            <span class="arrow"></span>
-                        </a>
-                        <ul class="sub-menu">
-                            <li>
-                                <a href="@Url.Action("QueryStat", "Questionaire", new { qtype =22})">
-                                    <i class="icon-bar-chart"></i>
-                                    问卷统计
-                                </a>
-                            </li>
-                            <li class="active">
-                                <a href="@Url.Action("QueryDetail", "Questionaire", new { qtype =22})">
-                                    <i class="icon-bulb"></i>
-                                    问卷明细
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="start">
-                        <a href="javascript:;">
-                            <i class="icon-home"></i>
-                            <span class="title">陈列&培训D2</span>
-                            <span class="selected"></span>
-                            <span class="arrow"></span>
-                        </a>
-                        <ul class="sub-menu">
-                            <li>
-                                <a href="@Url.Action("QueryStat", "Questionaire", new { qtype =23})">
-                                    <i class="icon-bar-chart"></i>
-                                    问卷统计
-                                </a>
-                            </li>
-                            <li class="active">
-                                <a href="@Url.Action("QueryDetail", "Questionaire", new { qtype =23})">
-                                    <i class="icon-bulb"></i>
-                                    问卷明细
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="start">
-                        <a href="javascript:;">
-                            <i class="icon-home"></i>
-                            <span class="title">陈列D2</span>
-                            <span class="selected"></span>
-                            <span class="arrow"></span>
-                        </a>
-                        <ul class="sub-menu">
-                            <li>
-                                <a href="@Url.Action("QueryStat", "Questionaire", new { qtype =24})">
-                                    <i class="icon-bar-chart"></i>
-                                    问卷统计
-                                </a>
-                            </li>
-                            <li class="active">
-                                <a href="@Url.Action("QueryDetail", "Questionaire", new { qtype =24})">
-                                    <i class="icon-bulb"></i>
-                                    问卷明细
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
+                                        }
+                    }
                 </ul>
-</div>
+            </div>
         </div>
         <div class="page-content-wrapper">
             <div class="page-content">

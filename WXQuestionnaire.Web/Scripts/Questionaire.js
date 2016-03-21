@@ -12,7 +12,7 @@ var dayIdentity = {
     day1: [
         {
             id: "d1DZ",
-            text: "店长",
+            text: "店长/商品场",
         },
         {
             id: "d1PPJLDD",
@@ -20,17 +20,17 @@ var dayIdentity = {
         },
         {
             id: "d1CLPX",
-            text: "陈列/培训",
+            text: "培训/陈列",
         },
-        {
-            id: "d1SP",
-            text: "商品",
-        },
+        //{
+        //    id: "d1SP",
+        //    text: "商品",
+        //},
     ],
     day2: [
         {
             id: "d2DZ",
-            text: "店长",
+            text: "店长/商品场",
         },
         {
             id: "d2PPJLDD",
@@ -38,11 +38,11 @@ var dayIdentity = {
         },
         {
             id: "d2CLPX",
-            text: "陈列/培训",
+            text: "陈列",
         },
         {
             id: "d2CL",
-            text: "陈列",
+            text: "培训",
         },
     ]
 };
@@ -278,13 +278,109 @@ var dataCommon = {
                 text: msgConst.text6,
             },
     ],
+    q7: [
+            {
+                id: 'Q71',
+                title: msgConst.title1,
+                text: msgConst.text1,
+            },
+            {
+                id: 'Q72',
+                title: msgConst.title2,
+                text: msgConst.text2,
+            },
+            {
+                id: 'Q73',
+                title: msgConst.title3,
+                text: msgConst.text3,
+            },
+            {
+                id: 'Q74',
+                title: msgConst.title4,
+                text: msgConst.text4,
+            },
+            {
+                id: 'Q75',
+                title: msgConst.title5,
+                text: msgConst.text5,
+            },
+            {
+                id: 'Q76',
+                title: msgConst.title6,
+                text: msgConst.text6,
+            },
+    ],
+    q8: [
+            {
+                id: 'Q81',
+                title: msgConst.title1,
+                text: msgConst.text1,
+            },
+            {
+                id: 'Q82',
+                title: msgConst.title2,
+                text: msgConst.text2,
+            },
+            {
+                id: 'Q83',
+                title: msgConst.title3,
+                text: msgConst.text3,
+            },
+            {
+                id: 'Q84',
+                title: msgConst.title4,
+                text: msgConst.text4,
+            },
+            {
+                id: 'Q85',
+                title: msgConst.title5,
+                text: msgConst.text5,
+            },
+            {
+                id: 'Q86',
+                title: msgConst.title6,
+                text: msgConst.text6,
+            },
+    ],
+    q9: [
+            {
+                id: 'Q91',
+                title: msgConst.title1,
+                text: msgConst.text1,
+            },
+            {
+                id: 'Q92',
+                title: msgConst.title2,
+                text: msgConst.text2,
+            },
+            {
+                id: 'Q93',
+                title: msgConst.title3,
+                text: msgConst.text3,
+            },
+            {
+                id: 'Q94',
+                title: msgConst.title4,
+                text: msgConst.text4,
+            },
+            {
+                id: 'Q95',
+                title: msgConst.title5,
+                text: msgConst.text5,
+            },
+            {
+                id: 'Q96',
+                title: msgConst.title6,
+                text: msgConst.text6,
+            },
+    ],
 };
 
 dataDay1 = [
     {
         questionType: "11",
         pageID: dayIdentity.day1[0].id,
-        title: "店长D1",
+        title: "店长/商品场D1",
         questions: [
             {
                 name: "SU16 开季指引-市场推广",
@@ -299,16 +395,28 @@ dataDay1 = [
                 subQuestions: dataCommon.q3
             },
             {
-                name: "慧眼识人-店铺人员招聘与管理 系列一",
+                name: "商品规划",
                 subQuestions: dataCommon.q4
             },
             {
-                name: "人才储备-培养",
+                name: "零售规划",
                 subQuestions: dataCommon.q5
             },
             {
-                name: "零售锦囊",
+                name: "视觉营销管理",
                 subQuestions: dataCommon.q6
+            },
+            {
+                name: "零售日志的运用",
+                subQuestions: dataCommon.q7
+            },
+            {
+                name: "后仓管理",
+                subQuestions: dataCommon.q8
+            },
+            {
+                name: "MSP带教培训",
+                subQuestions: dataCommon.q9
             },
             {
                 name: "项目组织安排",
@@ -322,20 +430,28 @@ dataDay1 = [
         title: "品牌经理&督导D1",
         questions: [
             {
-                name: "零售锦囊",
+                name: "Leadership领导力",
                 subQuestions: dataCommon.q1
             },
             {
-                name: "零售管理",
+                name: "零售日志的运用",
                 subQuestions: dataCommon.q2
             },
             {
-                name: "慧眼识人-店铺人员招聘与管理 系列一",
+                name: "后仓管理",
                 subQuestions: dataCommon.q3
             },
             {
-                name: "人才储备-培养",
+                name: "MSP带教培训",
                 subQuestions: dataCommon.q4
+            },
+            {
+                name: "慧眼识人-店铺人员招聘与管理系列",
+                subQuestions: dataCommon.q5
+            },
+            {
+                name: "知人善用-优质新员工的养成",
+                subQuestions: dataCommon.q6
             },
             {
                 name: "项目组织安排",
@@ -349,18 +465,18 @@ dataDay1 = [
         title: "培训&陈列D1",
         questions: [
             {
-                name: "SU16市场推广",
+                name: "开季指引-SU16市场推广",
                 subQuestions: dataCommon.q1
             },
             {
-                name: "SU16新品发布-鞋",
+                name: "开季指引-SU16新品发布-鞋类",
                 subQuestions: dataCommon.q2
             },
             {
-                name: "SU16新品发布-服装",
+                name: "开季指引-SU16新品发布-服装",
                 subQuestions: dataCommon.q3
             }, {
-                name: "SU16陈列指引",
+                name: "开季指引－SU16陈列指引",
                 subQuestions: dataCommon.q4
             }, {
                 name: "项目组织安排",
@@ -368,61 +484,53 @@ dataDay1 = [
             }
         ]
     },
-    {
-        questionType: "14",
-        pageID: dayIdentity.day1[3].id,
-        title: "商品D1",
-        questions: [
-            {
-                name: "零售规划",
-                subQuestions: dataCommon.q1
-            },
-            {
-                name: "商品规划",
-                subQuestions: dataCommon.q2
-            },
-            {
-                name: "SU16市场推广",
-                subQuestions: dataCommon.q3
-            }, {
-                name: "SU16新品发布-鞋",
-                subQuestions: dataCommon.q4
-            }, {
-                name: "SU16新品发布-服装",
-                subQuestions: dataCommon.q5
-            }, {
-                name: "项目组织安排",
-                subQuestions: dataCommon.q0
-            }
-        ]
-    }
+    //{
+    //    questionType: "14",
+    //    pageID: dayIdentity.day1[3].id,
+    //    title: "商品D1",
+    //    questions: [
+    //        {
+    //            name: "零售规划",
+    //            subQuestions: dataCommon.q1
+    //        },
+    //        {
+    //            name: "商品规划",
+    //            subQuestions: dataCommon.q2
+    //        },
+    //        {
+    //            name: "SU16市场推广",
+    //            subQuestions: dataCommon.q3
+    //        }, {
+    //            name: "SU16新品发布-鞋",
+    //            subQuestions: dataCommon.q4
+    //        }, {
+    //            name: "SU16新品发布-服装",
+    //            subQuestions: dataCommon.q5
+    //        }, {
+    //            name: "项目组织安排",
+    //            subQuestions: dataCommon.q0
+    //        }
+    //    ]
+    //}
 ];
 dataDay2 = [
     {
         questionType: "21",
         pageID: dayIdentity.day2[0].id,
-        title: "店长D2",
+        title: "店长/商品场D2",
         questions: [
             {
-                name: "零售规划",
+                name: "慧眼识人-店铺人员招聘与管理系列",
                 subQuestions: dataCommon.q1,
             },
             {
-                name: "商品规划",
+                name: "知人善用-优质新员工的养成",
                 subQuestions: dataCommon.q2,
             },
             {
-                name: "视觉营销管理",
+                name: "行动计划",
                 subQuestions: dataCommon.q3
             },
-            {
-                name: "行动计划",
-                subQuestions: dataCommon.q4
-            },
-            {
-                name: "项目组织安排",
-                subQuestions: dataCommon.q0
-            }
         ]
     },
     {
@@ -431,72 +539,68 @@ dataDay2 = [
         title: "品牌经理&督导D2",
         questions: [
             {
-                name: "零售规划",
+                name: "视觉营销管理",
                 subQuestions: dataCommon.q1,
             },
             {
-                name: "商品规划",
+                name: "零售规划",
                 subQuestions: dataCommon.q2,
             },
             {
-                name: "视觉营销管理",
+                name: "商品规划",
                 subQuestions: dataCommon.q3
             },
             {
                 name: "行动计划",
                 subQuestions: dataCommon.q4
             },
-            {
-                name: "项目组织安排",
-                subQuestions: dataCommon.q0
-            }
         ]
     },
     {
         questionType: "23",
         pageID: dayIdentity.day2[2].id,
-        title: "陈列兼培训D2",
+        title: "陈列D2",
         questions: [
             {
-                name: "培训:人才储备-培养",
+                name: "开季指引－SU16陈列指引",
                 subQuestions: dataCommon.q1
             },
             {
-                name: "培训:零售锦囊",
+                name: "开季指引－SU16陈列实操",
                 subQuestions: dataCommon.q2
             },
             {
-                name: "VM:陈列指引",
-                subQuestions: dataCommon.q3
-            }, {
-                name: "VM:陈列实操",
-                subQuestions: dataCommon.q4
-            }, {
                 name: "行动计划",
-                subQuestions: dataCommon.q5
-            }, {
-                name: "项目组织安排",
-                subQuestions: dataCommon.q0
-            }
+                subQuestions: dataCommon.q3
+            },
         ]
     },
     {
         questionType: "24",
         pageID: dayIdentity.day2[3].id,
-        title: "陈列D2",
+        title: "培训D2",
         questions: [
             {
-                name: "VM:陈列指引",
+                name: "知人善用-优质新员工的养成",
                 subQuestions: dataCommon.q1
             },
             {
-                name: "VM:陈列实操",
+                name: "零售日志的运用",
                 subQuestions: dataCommon.q2
             },
             {
-                name: "行动计划",
+                name: "后仓管理",
                 subQuestions: dataCommon.q3
-            }, {
+            },
+            {
+                name: "MSP带教培训",
+                subQuestions: dataCommon.q4
+            },
+            {
+                name: "行动计划",
+                subQuestions: dataCommon.q5
+            },
+            {
                 name: "项目组织安排",
                 subQuestions: dataCommon.q0
             }
@@ -516,15 +620,15 @@ $("#customerType").picker({
       }
     ]
 });
-//$("#position").picker({
-//    toolbarTemplate: '<header class="bar bar-nav">\
-//              <button class="button button-link pull-right close-picker">确定</button>\
-//              <h1 class="title">请选择职位</h1>\
-//              </header>',
-//    cols: [
-//      {
-//          textAlign: 'center',
-//          values: ['店长', '品牌经理/督导', '陈列/培训','商品']
-//      }
-//    ]
-//});
+$("#position").picker({
+    toolbarTemplate: '<header class="bar bar-nav">\
+              <button class="button button-link pull-right close-picker">确定</button>\
+              <h1 class="title">请选择职位</h1>\
+              </header>',
+    cols: [
+      {
+          textAlign: 'center',
+          values: ['品牌经理', '督导', '店长','商品']
+      }
+    ]
+});
