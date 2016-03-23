@@ -51,6 +51,10 @@ namespace WXQuestionnaire.BLL.Questionaire
                     statVM.QuestionaireCount = qList.Count;
                     var detailList = qList.Select(q => Newtonsoft.Json.JsonConvert.DeserializeObject<mQuestionaire.QuestionaireDetail>(q.QuestionaireDetail)).ToList();
                     // 项目组织安排
+                    if (qtype == mQuestionaire.QuestionaireTypes.店长D2 ||qtype == mQuestionaire.QuestionaireTypes.品牌经理兼督导D2 || qtype == mQuestionaire.QuestionaireTypes.陈列D2 || qtype == mQuestionaire.QuestionaireTypes.培训D2)
+                    {
+                        detailList.ForEach(d => { d.Q01 = true; d.Q02 = true; d.Q03 = true; });
+                    }
                     statVM.Q01Num = detailList.Count(d => d.Q01);
                     statVM.Q02Num = detailList.Count(d => d.Q02);
                     statVM.Q03Num = detailList.Count(d => d.Q03);
@@ -118,11 +122,15 @@ namespace WXQuestionnaire.BLL.Questionaire
                     statVM.QuestionaireCount = 1;
                     var detail = Newtonsoft.Json.JsonConvert.DeserializeObject<mQuestionaire.QuestionaireDetail>(questionaire.QuestionaireDetail);
                     // 项目组织安排
+                    mQuestionaire.QuestionaireTypes qtype = (mQuestionaire.QuestionaireTypes)Enum.ToObject(typeof(mQuestionaire.QuestionaireTypes), questionaire.QuestionaireType);
+                    if (qtype == mQuestionaire.QuestionaireTypes.店长D2 || qtype == mQuestionaire.QuestionaireTypes.品牌经理兼督导D2 || qtype == mQuestionaire.QuestionaireTypes.陈列D2 || qtype == mQuestionaire.QuestionaireTypes.培训D2)
+                    {
+                        detail.Q01 = true; detail.Q02 = true; detail.Q03 = true; 
+                    }
                     statVM.Q01Num = detail.Q01 ? 1 : 0;
                     statVM.Q02Num = detail.Q02 ? 1 : 0;
                     statVM.Q03Num = detail.Q03 ? 1 : 0;
                     // 课程及讲师反馈
-                    mQuestionaire.QuestionaireTypes qtype = (mQuestionaire.QuestionaireTypes)Enum.ToObject(typeof(mQuestionaire.QuestionaireTypes), questionaire.QuestionaireType);
                     statVM.QuestionStats = InitQStat(new List<mQuestionaire.QuestionaireDetail> { detail }, qtype);       // 智能插入子问题数量
 
                     // 根据问卷类型设置每个问题的名字
