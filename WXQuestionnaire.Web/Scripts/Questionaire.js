@@ -517,7 +517,7 @@ dataDay2 = [
     {
         questionType: "21",
         pageID: dayIdentity.day2[0].id,
-        title: "店长/商品场D2",
+        title: "店长D2",
         questions: [
             {
                 name: "慧眼识人-店铺人员招聘与管理系列",
@@ -531,6 +531,10 @@ dataDay2 = [
                 name: "行动计划",
                 subQuestions: dataCommon.q3
             },
+            {
+                name: "项目组织安排",
+                subQuestions: dataCommon.q0
+            }
         ]
     },
     {
@@ -554,6 +558,10 @@ dataDay2 = [
                 name: "行动计划",
                 subQuestions: dataCommon.q4
             },
+            {
+                name: "项目组织安排",
+                subQuestions: dataCommon.q0
+            }
         ]
     },
     {
@@ -573,6 +581,10 @@ dataDay2 = [
                 name: "行动计划",
                 subQuestions: dataCommon.q3
             },
+            {
+                name: "项目组织安排",
+                subQuestions: dataCommon.q0
+            }
         ]
     },
     {
